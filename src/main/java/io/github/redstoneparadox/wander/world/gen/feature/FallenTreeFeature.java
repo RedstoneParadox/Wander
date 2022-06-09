@@ -74,7 +74,11 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 		}
 
 		for (TreeDecorator decorator: decorators) {
-			decorator.generate(worldAccess, ((pos, state) -> worldAccess.setBlockState(pos, state, 19)), random, logPositions, new ArrayList<>());
+			decorator.generate(worldAccess, (pos, state) -> {
+				if (state.canPlaceAt(worldAccess, pos)) {
+					worldAccess.setBlockState(pos, state, 19);
+				}
+			}, random, logPositions, new ArrayList<>());
 		}
 
 		return true;

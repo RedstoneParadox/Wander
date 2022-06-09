@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.TestableWorld;
@@ -43,7 +44,7 @@ public class MossTreeDecorator extends TreeDecorator {
 			for (Direction direction: new Direction[] {NORTH, SOUTH, EAST, WEST, UP}) {
 				BlockPos pos = logPos.offset(direction);
 
-				if (random.nextFloat() <= probability && !logPositions.contains(pos)) {
+				if (random.nextFloat() <= probability && !logPositions.contains(pos) && !world.testFluidState(pos, FluidState::isEmpty)) {
 					replacer.accept(pos, Blocks.MOSS_CARPET.getDefaultState());
 				}
 			}

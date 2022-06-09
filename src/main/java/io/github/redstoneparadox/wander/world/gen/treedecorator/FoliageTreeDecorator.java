@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.TestableWorld;
@@ -47,7 +48,8 @@ public class FoliageTreeDecorator extends TreeDecorator {
 			BlockPos pos = logPos.offset(UP);
 
 			if (random.nextFloat() <= probability) {
-				replacer.accept(pos, provider.getBlockState(random, pos));
+				BlockState state = provider.getBlockState(random, pos);
+				replacer.accept(pos, state);
 			}
 		}
 	}
