@@ -29,25 +29,28 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 		Random random = context.getRandom();
 		BlockPos origin = context.getOrigin();
 		StructureWorldAccess worldAccess = context.getWorld();
-		BlockState log = config.log().getBlockState(random, origin);
+		BlockState stump = config.stump();
+		int height = config.height().get(random);
+		Direction direction;
+		switch (config.direction().get(random)) {
+			case 0 -> direction = NORTH;
+			case 1 -> direction = EAST;
+			case 2 -> direction = SOUTH;
+			case 3 -> direction = WEST;
+			default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
+		}
 
-		if (log.getBlock() instanceof PillarBlock) {
-			Direction direction;
-			switch (config.direction().get(random)) {
-				case 0 -> direction = NORTH;
-				case 1 -> direction = EAST;
-				case 2 -> direction = SOUTH;
-				case 3 -> direction = WEST;
-				default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
+		worldAccess.setBlockState(origin, stump, Block.NOTIFY_ALL);
+
+		for (int i = 0; i < height; i++) {
+			BlockPos pos = origin.offset(direction, i + 2);
+			BlockState log = config.log().getBlockState(random, pos);
+
+			if (log.getBlock() instanceof PillarBlock) {
+				log = log.with(PillarBlock.AXIS, direction.getAxis());
 			}
-			int height = config.height().get(random);
-			BlockState rotated = log.with(HollowLogBlock.AXIS, direction.getAxis());
 
-			worldAccess.setBlockState(origin, log, Block.NOTIFY_ALL);
-
-			for (int i = 0; i < height; i++) {
-				worldAccess.setBlockState(origin.offset(direction, i + 2), rotated, Block.NOTIFY_ALL);
-			}
+			worldAccess.setBlockState(pos, log, Block.NOTIFY_ALL);
 		}
 
 		return false;

@@ -16,4 +16,20 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
+	public static final Holder<PlacedFeature> BIRCH_FALLEN_TREE = PlacedFeatureUtil.register(
+			"wander:birch_fallen_tree",
+			WanderConfiguredFeatures.BIRCH_FALLEN_TREE,
+			CountPlacementModifier.create(3),
+			InSquarePlacementModifier.getInstance(),
+			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
+			BiomePlacementModifier.getInstance()
+	);
+	public static final Holder<PlacedFeature> OLD_BIRCH_FALLEN_TREE = PlacedFeatureUtil.register(
+			"wander:old_birch_fallen_tree",
+			WanderConfiguredFeatures.OLD_BIRCH_FALLEN_TREE,
+			CountPlacementModifier.create(3),
+			InSquarePlacementModifier.getInstance(),
+			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
+			BiomePlacementModifier.getInstance()
+	);
 }
