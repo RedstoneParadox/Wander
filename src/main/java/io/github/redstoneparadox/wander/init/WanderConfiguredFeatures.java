@@ -23,11 +23,11 @@ public class WanderConfiguredFeatures {
 			new FallenTreeFeatureConfig(
 					new WeightedBlockStateProvider(
 							DataPool.<BlockState>builder()
-									.add(Blocks.ACACIA_LOG.getDefaultState(), 6)
-									.add(WanderBlocks.HOLLOW_ACACIA_LOG.getDefaultState(), 4)
+									.add(Blocks.OAK_LOG.getDefaultState(), 6)
+									.add(WanderBlocks.HOLLOW_OAK_LOG.getDefaultState(), 4)
 									.build()
 					),
-					UniformIntProvider.create(4, 6),
+					UniformIntProvider.create(3, 5),
 					UniformIntProvider.create(0, 3)
 			)
 	);
