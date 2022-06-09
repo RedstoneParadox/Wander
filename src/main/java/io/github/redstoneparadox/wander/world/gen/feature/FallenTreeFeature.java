@@ -11,7 +11,10 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
+import net.minecraft.world.gen.treedecorator.TreeDecorator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static net.minecraft.util.math.Direction.EAST;
@@ -40,6 +43,8 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			case 3 -> direction = WEST;
 			default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
 		}
+		List<TreeDecorator> decorators = config.decorators();
+		List<BlockPos> logPositions = new ArrayList<>();
 
 		for (int i = 0; i <= height; i++) {
 			if (!worldAccess.testBlockState(origin.offset(direction, i + 1), BlockState::isAir)) {
@@ -47,9 +52,12 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			}
 		}
 
-		if (!worldAccess.getBlockState(origin.down()).isSolidBlock(worldAccess, origin.down())) return false;
+		if (!config.omitStump()) {
+			if (!worldAccess.getBlockState(origin.down()).isSolidBlock(worldAccess, origin.down())) return false;
 
-		worldAccess.setBlockState(origin, stump, Block.NOTIFY_ALL);
+			worldAccess.setBlockState(origin, stump, Block.NOTIFY_ALL);
+			logPositions.add(origin);
+		}
 
 		for (int i = 0; i < height; i++) {
 			BlockPos pos = origin.offset(direction, i + 2);
@@ -61,6 +69,11 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			}
 
 			worldAccess.setBlockState(pos, log, Block.NOTIFY_ALL);
+			logPositions.add(pos);
+		}
+
+		for (TreeDecorator decorator: decorators) {
+			decorator.generate(worldAccess, ((pos, state) -> worldAccess.setBlockState(pos, state, 19)), random, null, new ArrayList<>());
 		}
 
 		return true;
