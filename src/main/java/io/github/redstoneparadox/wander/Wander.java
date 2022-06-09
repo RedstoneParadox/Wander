@@ -2,6 +2,7 @@ package io.github.redstoneparadox.wander;
 
 import io.github.redstoneparadox.wander.init.WanderBlocks;
 import io.github.redstoneparadox.wander.init.WanderItems;
+import io.github.redstoneparadox.wander.init.WanderPlacedFeatures;
 import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
@@ -15,6 +16,8 @@ public class Wander implements ModInitializer {
 	@Override
 	public void onInitialize(ModContainer mod) {
 		Wander.id = mod.metadata().id();
+
+		WanderPlacedFeatures.addFeaturesToVanilla();
 
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
 	}

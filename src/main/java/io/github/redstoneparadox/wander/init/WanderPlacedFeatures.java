@@ -40,14 +40,14 @@ public class WanderPlacedFeatures {
 			BiomePlacementModifier.getInstance()
 	);
 
-	public static void addFeaturesToVanilla(String modid) {
+	public static void addFeaturesToVanilla() {
 		BiomeModifications.addFeature(
 				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key(modid, "fallen_oak_tree")
+				GenerationStep.Feature.VEGETAL_DECORATION, key("fallen_oak_tree")
 		);
 	}
 
-	private static RegistryKey<PlacedFeature> key(String modid, String name) {
-		return RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(modid, name));
+	private static RegistryKey<PlacedFeature> key(String name) {
+		return RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), Wander.id(name));
 	}
 }
