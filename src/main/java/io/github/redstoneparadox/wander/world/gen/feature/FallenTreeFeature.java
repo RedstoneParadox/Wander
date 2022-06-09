@@ -59,9 +59,10 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			if (stump.isFullCube(worldAccess, origin)) logPositions.add(origin);
 		}
 
+		BlockPos trunkStart = worldAccess.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, origin.offset(direction, 2));
+
 		for (int i = 0; i < height; i++) {
-			BlockPos pos = origin.offset(direction, i + 2);
-			pos = worldAccess.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, pos);
+			BlockPos pos = trunkStart.offset(direction, i);
 			BlockState log = config.log().getBlockState(random, pos);
 
 			if (log.getBlock() instanceof PillarBlock) {
