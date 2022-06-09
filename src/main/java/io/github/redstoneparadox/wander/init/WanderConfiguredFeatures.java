@@ -2,6 +2,7 @@ package io.github.redstoneparadox.wander.init;
 
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
+import io.github.redstoneparadox.wander.world.gen.treedecorator.FoliageTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.MossTreeDecorator;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -49,7 +50,7 @@ public class WanderConfiguredFeatures {
 			Wander.id("old_fallen_birch_tree").toString(),
 			WanderFeatures.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
-					WanderBlocks.HOLLOW_BIRCH_LOG.getDefaultState(),
+					Blocks.BIRCH_LOG.getDefaultState(),
 					new WeightedBlockStateProvider(
 							DataPool.<BlockState>builder()
 									.add(WanderBlocks.HOLLOW_BIRCH_LOG.getDefaultState(), 10)
@@ -60,7 +61,13 @@ public class WanderConfiguredFeatures {
 					UniformIntProvider.create(4, 6),
 					direction(),
 					false,
-					List.of()
+					List.of(
+							new MossTreeDecorator(0.4f),
+							new FoliageTreeDecorator(
+									SimpleBlockStateProvider.of(Blocks.ORANGE_TULIP),
+									0.6f
+							)
+					)
 			)
 	);
 
