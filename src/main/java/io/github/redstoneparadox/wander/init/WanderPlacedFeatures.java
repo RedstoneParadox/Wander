@@ -11,6 +11,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.BiomePlacementModifier;
 import net.minecraft.world.gen.decorator.CountPlacementModifier;
 import net.minecraft.world.gen.decorator.InSquarePlacementModifier;
+import net.minecraft.world.gen.decorator.NoiseThresholdCountPlacementModifier;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
 
@@ -18,9 +19,9 @@ public class WanderPlacedFeatures {
 	public static final Holder<PlacedFeature> FALLEN_OAK_TREE = PlacedFeatureUtil.register(
 			Wander.id("fallen_oak_tree").toString(),
 			WanderConfiguredFeatures.FALLEN_OAK_TREE,
-			CountPlacementModifier.create(3),
+			NoiseThresholdCountPlacementModifier.create(-0.5, 1, 0),
 			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
+			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
 	public static final Holder<PlacedFeature> FALLEN_BIRCH_TREE = PlacedFeatureUtil.register(
@@ -28,7 +29,7 @@ public class WanderPlacedFeatures {
 			WanderConfiguredFeatures.FALLEN_BIRCH_TREE,
 			CountPlacementModifier.create(3),
 			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
+			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
 	public static final Holder<PlacedFeature> OLD_FALLEN_BIRCH_TREE = PlacedFeatureUtil.register(
@@ -36,7 +37,7 @@ public class WanderPlacedFeatures {
 			WanderConfiguredFeatures.OLD_FALLEN_BIRCH_TREE,
 			CountPlacementModifier.create(3),
 			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
+			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
 
