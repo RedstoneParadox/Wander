@@ -22,8 +22,6 @@ public class Wander implements ModInitializer {
 		WanderItems.init(id);
 		WanderFeatures.init(id);
 
-		final Holder<PlacedFeature> foo = WanderPlacedFeatures.OAK_FALLEN_TREE;
-
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
 	}
 }
