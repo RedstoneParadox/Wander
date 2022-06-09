@@ -4,10 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
@@ -17,11 +14,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.BiConsumer;
 
-import static net.minecraft.util.math.Direction.EAST;
-import static net.minecraft.util.math.Direction.NORTH;
-import static net.minecraft.util.math.Direction.SOUTH;
 import static net.minecraft.util.math.Direction.UP;
-import static net.minecraft.util.math.Direction.WEST;
 
 public class FoliageTreeDecorator extends TreeDecorator {
 	public static final Codec<FoliageTreeDecorator> CODEC = RecordCodecBuilder.create(instance -> instance.group(

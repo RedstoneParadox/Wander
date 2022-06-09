@@ -1,7 +1,5 @@
 package io.github.redstoneparadox.wander;
 
-import io.github.redstoneparadox.wander.init.WanderBlocks;
-import io.github.redstoneparadox.wander.init.WanderFeatures;
 import io.github.redstoneparadox.wander.init.WanderItems;
 import io.github.redstoneparadox.wander.init.WanderPlacedFeatures;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;

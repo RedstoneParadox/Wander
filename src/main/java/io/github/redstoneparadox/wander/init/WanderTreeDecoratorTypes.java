@@ -5,7 +5,6 @@ import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.mixin.TreeDecoratorTypeInvoker;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.FoliageTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.MossTreeDecorator;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 

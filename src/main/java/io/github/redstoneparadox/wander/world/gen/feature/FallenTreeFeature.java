@@ -1,7 +1,6 @@
 package io.github.redstoneparadox.wander.world.gen.feature;
 
 import com.mojang.serialization.Codec;
-import io.github.redstoneparadox.wander.block.HollowLogBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;

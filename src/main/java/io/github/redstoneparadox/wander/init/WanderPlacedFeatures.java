@@ -3,7 +3,6 @@ package io.github.redstoneparadox.wander.init;
 import io.github.redstoneparadox.wander.Wander;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.minecraft.util.Holder;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.BiomeKeys;

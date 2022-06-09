@@ -1,7 +1,6 @@
 package io.github.redstoneparadox.wander.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
