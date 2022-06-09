@@ -40,6 +40,12 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
 		}
 
+		for (int i = 0; i <= height; i++) {
+			if (worldAccess.testBlockState(origin.offset(direction, i + 1), BlockState::isAir)) {
+				return false;
+			}
+		}
+
 		worldAccess.setBlockState(origin, stump, Block.NOTIFY_ALL);
 
 		for (int i = 0; i < height; i++) {
@@ -53,6 +59,6 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			worldAccess.setBlockState(pos, log, Block.NOTIFY_ALL);
 		}
 
-		return false;
+		return true;
 	}
 }
