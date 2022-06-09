@@ -41,7 +41,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 		}
 
 		for (int i = 0; i <= height; i++) {
-			if (worldAccess.testBlockState(origin.offset(direction, i + 1), BlockState::isAir)) {
+			if (!worldAccess.testBlockState(origin.offset(direction, i + 1), BlockState::isAir)) {
 				return false;
 			}
 		}
