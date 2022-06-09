@@ -1,6 +1,14 @@
 package io.github.redstoneparadox.wander.init;
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModification;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.util.Holder;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.BiomePlacementModifier;
 import net.minecraft.world.gen.decorator.CountPlacementModifier;
 import net.minecraft.world.gen.decorator.InSquarePlacementModifier;
@@ -32,4 +40,15 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
+
+	public static void addFeaturesToVanilla(String modid) {
+		BiomeModifications.addFeature(
+				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
+				GenerationStep.Feature.VEGETAL_DECORATION, key(modid, "fallen_oak_tree")
+		);
+	}
+
+	private static RegistryKey<PlacedFeature> key(String modid, String name) {
+		return RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(modid, name));
+	}
 }
