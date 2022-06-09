@@ -34,6 +34,12 @@ public class HollowLogBlock extends PillarBlock implements Waterloggable {
 
 	public HollowLogBlock(Settings settings) {
 		super(settings);
+		this.setDefaultState(
+				this.stateManager
+						.getDefaultState()
+						.with(AXIS, Direction.Axis.Y)
+						.with(WATERLOGGED, false)
+		);
 	}
 
 	private static VoxelShape compose(VoxelShape first, VoxelShape second, VoxelShape third, VoxelShape fourth) {
@@ -72,7 +78,7 @@ public class HollowLogBlock extends PillarBlock implements Waterloggable {
 		if (state.get(WATERLOGGED)) {
 			world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 		}
-		
+
 		return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
 	}
 
