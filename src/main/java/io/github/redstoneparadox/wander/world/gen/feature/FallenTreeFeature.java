@@ -56,7 +56,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			if (!worldAccess.getBlockState(origin.down()).isSolidBlock(worldAccess, origin.down())) return false;
 
 			worldAccess.setBlockState(origin, stump, Block.NOTIFY_ALL);
-			logPositions.add(origin);
+			if (stump.isFullCube(worldAccess, origin)) logPositions.add(origin);
 		}
 
 		for (int i = 0; i < height; i++) {
@@ -69,11 +69,11 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			}
 
 			worldAccess.setBlockState(pos, log, Block.NOTIFY_ALL);
-			logPositions.add(pos);
+			if (log.isFullCube(worldAccess, pos)) logPositions.add(pos);
 		}
 
 		for (TreeDecorator decorator: decorators) {
-			decorator.generate(worldAccess, ((pos, state) -> worldAccess.setBlockState(pos, state, 19)), random, null, new ArrayList<>());
+			decorator.generate(worldAccess, ((pos, state) -> worldAccess.setBlockState(pos, state, 19)), random, logPositions, new ArrayList<>());
 		}
 
 		return true;
