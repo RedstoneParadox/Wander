@@ -1,3 +1,8 @@
 {
-  "parent": "wander:block/hollow_log"
+  "parent": "wander:block/hollow_log",
+  "textures" : {
+    "end": "minecraft:block/acacia_log_top",
+    "side": "minecraft:block/acacia_log",
+    "inside": "wander:block/acacia_log_inside"
+  }
 }
