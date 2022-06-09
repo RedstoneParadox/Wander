@@ -17,6 +17,7 @@ public class Wander implements ModInitializer {
 	public void onInitialize(ModContainer mod) {
 		Wander.id = mod.metadata().id();
 
+		WanderItems.init();
 		WanderPlacedFeatures.addFeaturesToVanilla();
 
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());

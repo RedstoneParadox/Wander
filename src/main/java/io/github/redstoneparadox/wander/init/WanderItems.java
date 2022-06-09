@@ -52,6 +52,10 @@ public class WanderItems {
 			)
 	);
 
+	public static void init() {
+
+	}
+
 	private static Identifier hollowid(String name) {
 		return Wander.id("hollow_" + name + "_log");
 	}
