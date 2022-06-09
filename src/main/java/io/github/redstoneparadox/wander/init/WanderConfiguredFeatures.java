@@ -1,5 +1,6 @@
 package io.github.redstoneparadox.wander.init;
 
+import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,8 +14,8 @@ import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 public class WanderConfiguredFeatures {
-	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> OAK_FALLEN_TREE = ConfiguredFeatureUtil.register(
-			"wander:oak_fallen_tree",
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_OAK_TREE = ConfiguredFeatureUtil.register(
+			Wander.id("fallen_oak_tree").toString(),
 			WanderFeatures.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
 					Blocks.OAK_LOG.getDefaultState(),
@@ -23,8 +24,8 @@ public class WanderConfiguredFeatures {
 					direction()
 			)
 	);
-	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> BIRCH_FALLEN_TREE = ConfiguredFeatureUtil.register(
-			"wander:birch_fallen_tree",
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_BIRCH_TREE = ConfiguredFeatureUtil.register(
+			Wander.id("fallen_birch_tree").toString(),
 			WanderFeatures.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
 					Blocks.BIRCH_LOG.getDefaultState(),
@@ -33,8 +34,8 @@ public class WanderConfiguredFeatures {
 					direction()
 			)
 	);
-	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> OLD_BIRCH_FALLEN_TREE = ConfiguredFeatureUtil.register(
-			"wander:old_birch_fallen_tree",
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> OLD_FALLEN_BIRCH_TREE = ConfiguredFeatureUtil.register(
+			Wander.id("old_fallen_birch_tree").toString(),
 			WanderFeatures.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
 					WanderBlocks.HOLLOW_BIRCH_LOG.getDefaultState(),

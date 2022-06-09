@@ -1,8 +1,7 @@
 package io.github.redstoneparadox.wander.init;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeModification;
+import io.github.redstoneparadox.wander.Wander;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.util.Holder;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -16,25 +15,25 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
 
 public class WanderPlacedFeatures {
-	public static final Holder<PlacedFeature> OAK_FALLEN_TREE = PlacedFeatureUtil.register(
-			"wander:oak_fallen_tree",
-			WanderConfiguredFeatures.OAK_FALLEN_TREE,
+	public static final Holder<PlacedFeature> FALLEN_OAK_TREE = PlacedFeatureUtil.register(
+			Wander.id("fallen_oak_tree").toString(),
+			WanderConfiguredFeatures.FALLEN_OAK_TREE,
 			CountPlacementModifier.create(3),
 			InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
-	public static final Holder<PlacedFeature> BIRCH_FALLEN_TREE = PlacedFeatureUtil.register(
-			"wander:birch_fallen_tree",
-			WanderConfiguredFeatures.BIRCH_FALLEN_TREE,
+	public static final Holder<PlacedFeature> FALLEN_BIRCH_TREE = PlacedFeatureUtil.register(
+			Wander.id("fallen_birch_tree").toString(),
+			WanderConfiguredFeatures.FALLEN_BIRCH_TREE,
 			CountPlacementModifier.create(3),
 			InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
-	public static final Holder<PlacedFeature> OLD_BIRCH_FALLEN_TREE = PlacedFeatureUtil.register(
-			"wander:old_birch_fallen_tree",
-			WanderConfiguredFeatures.OLD_BIRCH_FALLEN_TREE,
+	public static final Holder<PlacedFeature> OLD_FALLEN_BIRCH_TREE = PlacedFeatureUtil.register(
+			Wander.id("old_fallen_birch_tree").toString(),
+			WanderConfiguredFeatures.OLD_FALLEN_BIRCH_TREE,
 			CountPlacementModifier.create(3),
 			InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.MOTION_BLOCKING_HEIGHTMAP,
