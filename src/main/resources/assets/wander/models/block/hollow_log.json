@@ -1,6 +1,9 @@
 {
 	"credit": "Made with Blockbench",
     "gui_light": "side",
+    "textures": {
+      "particle": "#side"
+    },
     "display": {
       "gui": {
         "rotation": [ 30, 225, 0 ],

@@ -3,6 +3,6 @@
   "textures" : {
     "end": "minecraft:block/acacia_log_top",
     "side": "minecraft:block/acacia_log",
-    "inside": "wander:block/acacia_log_inside"
+    "inside": "minecraft:block/stripped_acacia_log"
   }
 }
