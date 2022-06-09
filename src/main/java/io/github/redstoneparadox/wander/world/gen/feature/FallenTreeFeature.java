@@ -13,7 +13,10 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Random;
 
-import static net.minecraft.util.math.Direction.*;
+import static net.minecraft.util.math.Direction.EAST;
+import static net.minecraft.util.math.Direction.NORTH;
+import static net.minecraft.util.math.Direction.SOUTH;
+import static net.minecraft.util.math.Direction.WEST;
 
 public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 	public FallenTreeFeature(Codec<FallenTreeFeatureConfig> codec) {

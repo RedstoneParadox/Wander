@@ -4,15 +4,9 @@ import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfi
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Holder;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.util.ConfiguredFeatureUtil;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 

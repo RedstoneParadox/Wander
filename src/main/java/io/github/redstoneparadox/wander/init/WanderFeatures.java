@@ -4,7 +4,6 @@ import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeature;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
