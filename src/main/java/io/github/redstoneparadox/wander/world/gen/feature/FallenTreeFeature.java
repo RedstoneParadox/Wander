@@ -3,6 +3,7 @@ package io.github.redstoneparadox.wander.world.gen.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -46,7 +47,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 		List<BlockPos> logPositions = new ArrayList<>();
 
 		for (int i = 0; i <= height; i++) {
-			if (!worldAccess.testBlockState(origin.offset(direction, i + 1), BlockState::isAir)) {
+			if (!worldAccess.testBlockState(origin.offset(direction, i + 1), state -> state.isAir() || state.isOf(Blocks.WATER))) {
 				return false;
 			}
 		}

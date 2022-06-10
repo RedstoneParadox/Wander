@@ -31,6 +31,28 @@ public class WanderConfiguredFeatures {
 					new ArrayList<>()
 			)
 	);
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> SUBMERGED_FALLEN_OAK_TREE = ConfiguredFeatureUtil.register(
+			Wander.id("submerged_fallen_oak_tree").toString(),
+			WanderFeatures.FALLEN_TREE,
+			new FallenTreeFeatureConfig(
+					Blocks.OAK_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_OAK_LOG.getDefaultState()),
+					UniformIntProvider.create(2, 5),
+					direction(),
+					true,
+					List.of(
+							new FoliageTreeDecorator(
+									new WeightedBlockStateProvider(
+											DataPool.<BlockState>builder()
+													.add(Blocks.SEAGRASS.getDefaultState(), 1)
+													.add(Blocks.TALL_SEAGRASS.getDefaultState(), 1)
+													.build()
+									),
+									0.7f
+							)
+					)
+			)
+	);
 	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_BIRCH_TREE = ConfiguredFeatureUtil.register(
 			Wander.id("fallen_birch_tree").toString(),
 			WanderFeatures.FALLEN_TREE,
