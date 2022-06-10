@@ -32,7 +32,7 @@ public class WanderPlacedFeatures {
 	public static final Holder<PlacedFeature> SUBMERGED_FALLEN_OAK_TREE = PlacedFeatureUtil.register(
 			Wander.id("submerged_fallen_oak_tree").toString(),
 			WanderConfiguredFeatures.SUBMERGED_FALLEN_OAK_TREE,
-			NoiseThresholdCountPlacementModifier.create(-0.5, 2, 1),
+			NoiseThresholdCountPlacementModifier.create(-0.8, 2, 1),
 			InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.OCEAN_FLOOR_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance(),

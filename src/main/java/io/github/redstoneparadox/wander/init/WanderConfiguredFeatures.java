@@ -1,6 +1,7 @@
 package io.github.redstoneparadox.wander.init;
 
 import io.github.redstoneparadox.wander.Wander;
+import io.github.redstoneparadox.wander.block.HollowLogBlock;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.FoliageTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.MossTreeDecorator;
@@ -36,7 +37,7 @@ public class WanderConfiguredFeatures {
 			WanderFeatures.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
 					Blocks.OAK_LOG.getDefaultState(),
-					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_OAK_LOG.getDefaultState()),
+					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_OAK_LOG.getDefaultState().with(HollowLogBlock.WATERLOGGED, true)),
 					UniformIntProvider.create(2, 5),
 					direction(),
 					true,

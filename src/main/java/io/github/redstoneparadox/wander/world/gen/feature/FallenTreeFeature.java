@@ -70,7 +70,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			}
 
 			worldAccess.setBlockState(pos, log, Block.NOTIFY_ALL);
-			if (log.isFullCube(worldAccess, pos)) logPositions.add(pos);
+			logPositions.add(pos);
 		}
 
 		for (TreeDecorator decorator: decorators) {
