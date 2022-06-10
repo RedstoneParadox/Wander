@@ -4,6 +4,7 @@
   "package": "io.github.redstoneparadox.wander.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ConfiguredFeatureUtilMixin",
     "TreeDecoratorTypeInvoker"
   ],
   "client": [
