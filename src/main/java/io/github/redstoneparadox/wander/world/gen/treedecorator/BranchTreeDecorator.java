@@ -40,11 +40,9 @@ public class BranchTreeDecorator extends TreeDecorator {
 
 	@Override
 	public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
-		if (logPositions.size() <= 5) return;
-
-		List<BlockPos> posList = new ArrayList<>(logPositions);
-		posList.sort((o1, o2) -> IntComparators.OPPOSITE_COMPARATOR.compare(o1.getY(), o2.getY()));
-		posList = posList.stream().filter(pos -> {
+		List<BlockPos> possiblePositions = new ArrayList<>(logPositions);
+		possiblePositions.sort((o1, o2) -> IntComparators.OPPOSITE_COMPARATOR.compare(o1.getY(), o2.getY()));
+		possiblePositions = possiblePositions.stream().filter(pos -> {
 			for (Direction direction: new Direction[] { NORTH, SOUTH, EAST, WEST }) {
 				if (!world.testBlockState(pos.offset(direction), BlockState::isAir)) return false;
 			}
@@ -52,8 +50,10 @@ public class BranchTreeDecorator extends TreeDecorator {
 			return true;
 		}).toList();
 
+		if (possiblePositions.size() <= 3) return;
+
 		for (Direction direction: new Direction[] { NORTH, SOUTH, EAST, WEST }) {
-			BlockPos pos = posList.get(0).offset(direction);
+			BlockPos pos = possiblePositions.get(0).offset(direction);
 
 			replacer.accept(pos, log);
 		}
