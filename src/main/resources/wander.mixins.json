@@ -7,9 +7,6 @@
     "ConfiguredFeatureUtilMixin",
     "TreeDecoratorTypeInvoker"
   ],
-  "client": [
-    "TitleScreenMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
 	}
