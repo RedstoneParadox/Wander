@@ -44,13 +44,13 @@ public class BranchTreeDecorator extends TreeDecorator {
 		possiblePositions.sort((o1, o2) -> IntComparators.OPPOSITE_COMPARATOR.compare(o1.getY(), o2.getY()));
 		possiblePositions = possiblePositions.stream().filter(pos -> {
 			for (Direction direction: new Direction[] { NORTH, SOUTH, EAST, WEST }) {
-				if (!world.testBlockState(pos.offset(direction), BlockState::isAir)) return false;
+				if (!world.testBlockState(pos.offset(direction), state -> state.isAir() || state.isOf(Blocks.WATER))) return false;
 			}
 
 			return true;
 		}).toList();
 
-		if (possiblePositions.size() <= 3) return;
+		if (possiblePositions.size() < 4) return;
 
 		for (Direction direction: new Direction[] { NORTH, SOUTH, EAST, WEST }) {
 			BlockPos pos = possiblePositions.get(0).offset(direction);
