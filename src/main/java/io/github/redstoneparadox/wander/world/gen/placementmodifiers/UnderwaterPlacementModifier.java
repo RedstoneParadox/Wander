@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import io.github.redstoneparadox.wander.init.WanderPlacementModifierTypes;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.decorator.DecoratorContext;
@@ -20,7 +21,7 @@ public class UnderwaterPlacementModifier extends PlacementModifier {
 	public static Codec<UnderwaterPlacementModifier> CODEC = Codec.unit(INSTANCE);
 
 	@Override
-	public Stream<BlockPos> getPositions(DecoratorContext context, Random random, BlockPos pos) {
+	public Stream<BlockPos> getPositions(DecoratorContext context, RandomGenerator random, BlockPos pos) {
 		List<BlockPos> positions = new ArrayList<>();
 		StructureWorldAccess access = context.getWorld();
 

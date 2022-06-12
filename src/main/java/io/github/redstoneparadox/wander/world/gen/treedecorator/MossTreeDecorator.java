@@ -38,6 +38,10 @@ public class MossTreeDecorator extends TreeDecorator {
 	}
 
 	@Override
+	public void generate(class_7402 arg) {
+
+	}
+
 	public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
 		for (BlockPos logPos: logPositions) {
 			for (Direction direction: new Direction[] {NORTH, SOUTH, EAST, WEST, UP}) {

@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
@@ -36,7 +37,11 @@ public class FoliageTreeDecorator extends TreeDecorator {
 	}
 
 	@Override
-	public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+	public void generate(class_7402 arg) {
+
+	}
+
+	public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, RandomGenerator random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
 		for (BlockPos logPos: logPositions) {
 			BlockPos pos = logPos.offset(UP);
 

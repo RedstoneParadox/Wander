@@ -10,6 +10,7 @@ import net.minecraft.block.FacingBlock;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
@@ -42,8 +43,14 @@ public class BranchTreeDecorator extends TreeDecorator {
 		return WanderTreeDecoratorTypes.BRANCH_TREE_DECORATOR;
 	}
 
+
 	@Override
-	public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+	public void generate(class_7402 parameters) {
+		TestableWorld world = parameters.method_43316();
+		BiConsumer<BlockPos, BlockState> replacer = parameters::method_43318;
+		RandomGenerator random = parameters.method_43320();
+		List<BlockPos> logPositions = parameters.method_43321();
+
 		List<BlockPos> possiblePositions = new ArrayList<>(logPositions);
 		possiblePositions.sort((o1, o2) -> IntComparators.OPPOSITE_COMPARATOR.compare(o1.getY(), o2.getY()));
 		possiblePositions = possiblePositions.stream().filter(pos -> {

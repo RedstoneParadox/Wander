@@ -7,6 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -14,8 +15,10 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import static net.minecraft.util.math.Direction.EAST;
 import static net.minecraft.util.math.Direction.NORTH;
@@ -30,7 +33,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 	@Override
 	public boolean place(FeatureContext<FallenTreeFeatureConfig> context) {
 		FallenTreeFeatureConfig config = context.getConfig();
-		Random random = context.getRandom();
+		RandomGenerator random = context.getRandom();
 		BlockPos origin = context.getOrigin();
 		StructureWorldAccess worldAccess = context.getWorld();
 		BlockState stump = config.stump();
@@ -44,7 +47,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
 		}
 		List<TreeDecorator> decorators = config.decorators();
-		List<BlockPos> logPositions = new ArrayList<>();
+		Set<BlockPos> logPositions = new HashSet<>();
 
 		for (int i = 0; i <= height; i++) {
 			if (!worldAccess.testBlockState(origin.offset(direction, i + 1), state -> state.isAir() || state.isOf(Blocks.WATER))) {
@@ -73,12 +76,21 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			logPositions.add(pos);
 		}
 
+		TreeDecorator.class_7402 parameters = new TreeDecorator.class_7402(
+				worldAccess,
+				(pos, state) -> {
+					if (state.canPlaceAt(worldAccess, pos)) {
+						worldAccess.setBlockState(pos, state, 19);
+					}
+				},
+				random,
+				logPositions,
+				new HashSet<>(),
+				new HashSet<>()
+		);
+
 		for (TreeDecorator decorator: decorators) {
-			decorator.generate(worldAccess, (pos, state) -> {
-				if (state.canPlaceAt(worldAccess, pos)) {
-					worldAccess.setBlockState(pos, state, 19);
-				}
-			}, random, logPositions, new ArrayList<>());
+			decorator.generate(parameters);
 		}
 
 		return true;
