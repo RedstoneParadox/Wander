@@ -1,6 +1,5 @@
 package io.github.redstoneparadox.wander.mixin;
 
-import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.BranchTreeDecorator;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Holder;
@@ -22,14 +21,7 @@ public class ConfiguredFeatureUtilMixin {
 	private static <FC extends FeatureConfig, F extends Feature<FC>> void register(String id, F feature, FC featureConfig, CallbackInfoReturnable<Holder<ConfiguredFeature<FC, ?>>> cir) {
 		if (Objects.equals(id, "swamp_oak") && featureConfig instanceof TreeFeatureConfig) {
 			// Wander.LOGGER.info("We Gottem!");
-
-
-			try {
-				((TreeFeatureConfig) featureConfig).decorators.add(new BranchTreeDecorator(Blocks.RED_CONCRETE.getDefaultState()));
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw e;
-			}
+			((TreeFeatureConfig) featureConfig).decorators.add(new BranchTreeDecorator(Blocks.OAK_LOG.getDefaultState(), 0.4f));
 		}
 	}
 }
