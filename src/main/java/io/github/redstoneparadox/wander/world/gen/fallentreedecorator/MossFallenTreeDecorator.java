@@ -2,6 +2,7 @@ package io.github.redstoneparadox.wander.world.gen.fallentreedecorator;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
@@ -22,6 +23,7 @@ public class MossFallenTreeDecorator extends FallenTreeDecorator {
 			.fieldOf("probability")
 			.xmap(MossFallenTreeDecorator::new, decorator -> decorator.probability)
 			.codec();
+	private static final BlockState MOSS_CARPET = Blocks.MOSS_CARPET.getDefaultState();
 	private final float probability;
 
 	public MossFallenTreeDecorator(float probability) {
@@ -39,8 +41,8 @@ public class MossFallenTreeDecorator extends FallenTreeDecorator {
 			for (Direction direction: new Direction[] {NORTH, SOUTH, EAST, WEST, UP}) {
 				BlockPos pos = logPos.offset(direction);
 
-				if (random.nextFloat() <= probability && !logPositions.contains(pos) && !world.testFluidState(pos, FluidState::isEmpty)) {
-					world.setBlockState(pos, Blocks.MOSS_CARPET.getDefaultState(), Block.NOTIFY_ALL);
+				if (random.nextFloat() <= probability && !logPositions.contains(pos) && MOSS_CARPET.canPlaceAt(world, pos) && world.testBlockState(pos, BlockState::isAir)) {
+					world.setBlockState(pos, MOSS_CARPET, Block.NOTIFY_ALL);
 				}
 			}
 		}

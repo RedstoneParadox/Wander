@@ -29,7 +29,9 @@ public class WanderConfiguredFeatures {
 					UniformIntProvider.create(3, 5),
 					direction(),
 					false,
-					new ArrayList<>()
+					List.of(
+							new MossFallenTreeDecorator(0.5f)
+					)
 			)
 	);
 	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> SUBMERGED_FALLEN_OAK_TREE = ConfiguredFeatureUtil.register(

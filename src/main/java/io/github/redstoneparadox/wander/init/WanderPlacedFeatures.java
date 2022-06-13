@@ -29,6 +29,14 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
+	public static final Holder<PlacedFeature> FALLEN_OAK_TREE_COMMON = PlacedFeatureUtil.register(
+			Wander.id("fallen_oak_tree_common").toString(),
+			WanderConfiguredFeatures.FALLEN_OAK_TREE,
+			NoiseThresholdCountPlacementModifier.create(-0.5, 2, 1),
+			InSquarePlacementModifier.getInstance(),
+			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
+			BiomePlacementModifier.getInstance()
+	);
 	public static final Holder<PlacedFeature> SUBMERGED_FALLEN_OAK_TREE = PlacedFeatureUtil.register(
 			Wander.id("submerged_fallen_oak_tree").toString(),
 			WanderConfiguredFeatures.SUBMERGED_FALLEN_OAK_TREE,
@@ -58,7 +66,7 @@ public class WanderPlacedFeatures {
 	public static void addFeaturesToVanilla() {
 		BiomeModifications.addFeature(
 				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key("fallen_oak_tree")
+				GenerationStep.Feature.VEGETAL_DECORATION, key("fallen_oak_tree_common")
 		);
 		BiomeModifications.addFeature(
 				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
