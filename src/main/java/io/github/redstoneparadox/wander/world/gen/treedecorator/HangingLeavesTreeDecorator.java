@@ -31,7 +31,7 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
 	private final float probability;
 
 	public HangingLeavesTreeDecorator(BlockState leaves, List<BlockState> canReplace, IntProvider leafLength, float probability) {
-		canReplace.add(Blocks.AIR.getDefaultState());
+		// canReplace.add(Blocks.AIR.getDefaultState());
 
 		this.leafState = leaves;
 		this.canReplace = canReplace;

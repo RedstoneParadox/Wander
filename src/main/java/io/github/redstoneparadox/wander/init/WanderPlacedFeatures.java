@@ -3,6 +3,7 @@ package io.github.redstoneparadox.wander.init;
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.world.gen.placementmodifiers.UnderwaterPlacementModifier;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.render.SkyProperties;
 import net.minecraft.util.Holder;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -62,6 +63,11 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
+	public static final Holder<PlacedFeature> WILLOW_TREE = PlacedFeatureUtil.register(
+			Wander.id("willow_tree").toString(),
+			WanderConfiguredFeatures.WILLOW_TREE,
+			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
+	);
 
 	public static void addFeaturesToVanilla() {
 		BiomeModifications.addFeature(
@@ -71,6 +77,10 @@ public class WanderPlacedFeatures {
 		BiomeModifications.addFeature(
 				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
 				GenerationStep.Feature.VEGETAL_DECORATION, key("submerged_fallen_oak_tree")
+		);
+		BiomeModifications.addFeature(
+				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
+				GenerationStep.Feature.VEGETAL_DECORATION, key("willow_tree")
 		);
 	}
 
