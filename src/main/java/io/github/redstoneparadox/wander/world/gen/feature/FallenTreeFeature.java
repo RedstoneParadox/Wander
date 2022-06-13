@@ -1,6 +1,7 @@
 package io.github.redstoneparadox.wander.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.FallenTreeDecorator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -46,7 +47,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			case 3 -> direction = WEST;
 			default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
 		}
-		List<TreeDecorator> decorators = config.decorators();
+		List<FallenTreeDecorator> decorators = config.decorators();
 		Set<BlockPos> logPositions = new HashSet<>();
 
 		for (int i = 0; i <= height; i++) {
@@ -76,21 +77,8 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 			logPositions.add(pos);
 		}
 
-		TreeDecorator.class_7402 parameters = new TreeDecorator.class_7402(
-				worldAccess,
-				(pos, state) -> {
-					if (state.canPlaceAt(worldAccess, pos)) {
-						worldAccess.setBlockState(pos, state, 19);
-					}
-				},
-				random,
-				logPositions,
-				new HashSet<>(),
-				new HashSet<>()
-		);
-
-		for (TreeDecorator decorator: decorators) {
-			decorator.generate(parameters);
+		for (FallenTreeDecorator decorator: decorators) {
+			decorator.generate(worldAccess, random, logPositions);
 		}
 
 		return true;

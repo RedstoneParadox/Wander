@@ -2,9 +2,9 @@ package io.github.redstoneparadox.wander.init;
 
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.block.HollowLogBlock;
+import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.FoliageFallenTreeDecorator;
+import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.MossFallenTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
-import io.github.redstoneparadox.wander.world.gen.treedecorator.FoliageTreeDecorator;
-import io.github.redstoneparadox.wander.world.gen.treedecorator.MossTreeDecorator;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Holder;
@@ -42,7 +42,7 @@ public class WanderConfiguredFeatures {
 					direction(),
 					true,
 					List.of(
-							new FoliageTreeDecorator(
+							new FoliageFallenTreeDecorator(
 									new WeightedBlockStateProvider(
 											DataPool.<BlockState>builder()
 													.add(Blocks.SEAGRASS.getDefaultState(), 1)
@@ -64,7 +64,7 @@ public class WanderConfiguredFeatures {
 					direction(),
 					false,
 					List.of(
-							new MossTreeDecorator(0.4f)
+							new MossFallenTreeDecorator(0.4f)
 					)
 			)
 	);
@@ -84,8 +84,8 @@ public class WanderConfiguredFeatures {
 					direction(),
 					false,
 					List.of(
-							new MossTreeDecorator(0.4f),
-							new FoliageTreeDecorator(
+							new MossFallenTreeDecorator(0.4f),
+							new FoliageFallenTreeDecorator(
 									SimpleBlockStateProvider.of(Blocks.ORANGE_TULIP),
 									0.6f
 							)

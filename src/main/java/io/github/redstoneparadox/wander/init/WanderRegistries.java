@@ -8,7 +8,7 @@ import net.minecraft.util.registry.SimpleRegistry;
 
 public class WanderRegistries {
 	public static final SimpleRegistry<FallenTreeDecoratorType> FALLEN_TREE_DECORATOR_TYPE = FabricRegistryBuilder
-			.createSimple(FallenTreeDecoratorType.class, Wander.id("fallen_tree_decorator"))
+			.createDefaulted(FallenTreeDecoratorType.class, Wander.id("fallen_tree_decorator"), Wander.id("moss"))
 			.attribute(RegistryAttribute.MODDED)
 			.attribute(RegistryAttribute.SYNCED)
 			.buildAndRegister();

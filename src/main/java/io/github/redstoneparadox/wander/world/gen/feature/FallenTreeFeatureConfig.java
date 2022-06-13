@@ -2,6 +2,7 @@ package io.github.redstoneparadox.wander.world.gen.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.FallenTreeDecorator;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.feature.FeatureConfig;
@@ -16,7 +17,7 @@ public record FallenTreeFeatureConfig(
 		IntProvider height,
 		IntProvider direction,
 		boolean omitStump,
-		List<TreeDecorator> decorators
+		List<FallenTreeDecorator> decorators
 ) implements FeatureConfig {
 	public static final Codec<FallenTreeFeatureConfig> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			BlockState.CODEC.fieldOf("stump").forGetter(FallenTreeFeatureConfig::stump),
@@ -24,6 +25,6 @@ public record FallenTreeFeatureConfig(
 			IntProvider.VALUE_CODEC.fieldOf("height").forGetter(FallenTreeFeatureConfig::height),
 			IntProvider.VALUE_CODEC.fieldOf("direction").forGetter(FallenTreeFeatureConfig::direction),
 			Codec.BOOL.fieldOf("omitStump").forGetter(FallenTreeFeatureConfig::omitStump),
-			Codec.list(TreeDecorator.TYPE_CODEC).fieldOf("decorators").forGetter(FallenTreeFeatureConfig::decorators)
+			Codec.list(FallenTreeDecorator.TYPE_CODEC).fieldOf("decorators").forGetter(FallenTreeFeatureConfig::decorators)
 	).apply(instance, instance.stable(FallenTreeFeatureConfig::new)));
 }
