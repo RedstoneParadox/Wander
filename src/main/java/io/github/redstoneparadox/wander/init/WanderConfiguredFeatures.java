@@ -41,6 +41,7 @@ import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,26 +128,10 @@ public class WanderConfiguredFeatures {
 			Feature.TREE,
 			new TreeFeatureConfig.Builder(
 					BlockStateProvider.of(Blocks.OAK_LOG),
-					new C_sismmyuo(
-							4, 1, 9, UniformIntProvider.create(1, 6), 0.5F, UniformIntProvider.create(0, 1), Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
-					),
+					new StraightTrunkPlacer(6, 1, 6),
 					BlockStateProvider.of(Blocks.JUNGLE_LEAVES),
-					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 35),
-					Optional.of(
-							new C_dkqjnekb(
-									UniformIntProvider.create(3, 7),
-									BlockStateProvider.of(Blocks.MANGROVE_ROOTS),
-									Optional.of(new C_iajygakr(BlockStateProvider.of(Blocks.MOSS_CARPET), 0.5F)),
-									new C_jjhxbuto(
-											Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
-											HolderSet.createDirect(Block::getBuiltInRegistryHolder, Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS),
-											BlockStateProvider.of(Blocks.MUDDY_MANGROVE_ROOTS),
-											8,
-											15,
-											0.2F
-									)
-							)
-					),
+					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 70),
+					Optional.empty(),
 					new TwoLayersFeatureSize(3, 0, 2)
 			)
 					.decorators(List.of(
@@ -167,8 +152,8 @@ public class WanderConfiguredFeatures {
 							new HangingLeavesTreeDecorator(
 									Blocks.JUNGLE_LEAVES.getDefaultState(),
 									List.of(Blocks.AIR.getDefaultState()),
-									UniformIntProvider.create(2, 4),
-									0.4f
+									UniformIntProvider.create(3, 6),
+									0.2f
 							)
 					))
 					.ignoreVines()
