@@ -21,7 +21,7 @@ public class ConfiguredFeatureUtilMixin {
 	private static <FC extends FeatureConfig, F extends Feature<FC>> void register(String id, F feature, FC featureConfig, CallbackInfoReturnable<Holder<ConfiguredFeature<FC, ?>>> cir) {
 		if (Objects.equals(id, "swamp_oak") && featureConfig instanceof TreeFeatureConfig) {
 			// Wander.LOGGER.info("We Gottem!");
-			((TreeFeatureConfig) featureConfig).decorators.add(new BranchTreeDecorator(Blocks.OAK_LOG.getDefaultState(), 0.4f));
+			((TreeFeatureConfig) featureConfig).decorators.add(new BranchTreeDecorator(Blocks.OAK_LOG.getDefaultState(), 0.4f, 0.5f));
 		}
 	}
 }

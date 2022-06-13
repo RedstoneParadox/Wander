@@ -28,14 +28,17 @@ import static net.minecraft.util.math.Direction.WEST;
 public class BranchTreeDecorator extends TreeDecorator {
 	public static final Codec<BranchTreeDecorator> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			BlockState.CODEC.fieldOf("log").forGetter(decorator -> decorator.log),
-			Codec.FLOAT.fieldOf("probability").forGetter(decorator -> decorator.probability)
+			Codec.floatRange(0.0f, 1.0f).fieldOf("probability").forGetter(decorator -> decorator.probability),
+			Codec.floatRange(0.0f, 1.0f).fieldOf("multiplier").forGetter(decorator -> decorator.multiplier)
 	).apply(instance, BranchTreeDecorator::new));
 	private final BlockState log;
 	private final float probability;
+	private final float multiplier;
 
-	public BranchTreeDecorator(BlockState log, float probability) {
+	public BranchTreeDecorator(BlockState log, float probability, float multiplier) {
 		this.log = log;
 		this.probability = probability;
+		this.multiplier = multiplier;
 	}
 
 	@Override
@@ -64,9 +67,10 @@ public class BranchTreeDecorator extends TreeDecorator {
 		if (possiblePositions.size() < 4) return;
 
 		possiblePositions = possiblePositions.subList(0, possiblePositions.size() - 3);
+		float trueProbability = probability;
 
 		for (Direction direction: new Direction[] { NORTH, SOUTH, EAST, WEST }) {
-			if (random.nextFloat() <= probability) {
+			if (random.nextFloat() <= trueProbability) {
 				int index = random.nextInt(possiblePositions.size());
 				BlockPos pos = possiblePositions.get(index).offset(direction);
 
@@ -77,6 +81,8 @@ public class BranchTreeDecorator extends TreeDecorator {
 				} else {
 					replacer.accept(pos, log);
 				}
+
+				trueProbability *= multiplier;
 			}
 		}
 	}
