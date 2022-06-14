@@ -6,6 +6,7 @@ import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.FoliageFal
 import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.MossFallenTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.HangingLeavesTreeDecorator;
+import io.github.redstoneparadox.wander.world.gen.trunkplacer.WillowTrunkPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -128,7 +129,9 @@ public class WanderConfiguredFeatures {
 			Feature.TREE,
 			new TreeFeatureConfig.Builder(
 					BlockStateProvider.of(Blocks.OAK_LOG),
-					new StraightTrunkPlacer(6, 1, 6),
+					new WillowTrunkPlacer(
+							5, 2, 6, UniformIntProvider.create(1, 4), 0.95F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), 5
+					),
 					BlockStateProvider.of(Blocks.JUNGLE_LEAVES),
 					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 70),
 					Optional.empty(),
@@ -141,7 +144,7 @@ public class WanderConfiguredFeatures {
 									1,
 									0,
 									new RandomizedIntBlockStateProvider(
-											BlockStateProvider.of(Blocks.MANGROVE_PROPAGULE.getDefaultState().with(MangrovePropaguleBlock.HANGING, Boolean.valueOf(true))),
+											BlockStateProvider.of(Blocks.MANGROVE_PROPAGULE.getDefaultState().with(MangrovePropaguleBlock.HANGING, Boolean.TRUE)),
 											MangrovePropaguleBlock.AGE_4,
 											UniformIntProvider.create(0, 4)
 									),

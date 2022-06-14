@@ -6,7 +6,8 @@
   "mixins": [
     "ConfiguredFeatureUtilMixin",
     "TreeDecoratorTypeInvoker",
-    "TreeFeatureConfigMixin"
+    "TreeFeatureConfigMixin",
+    "TrunkPlacerTypeInvoker"
   ],
   "injectors": {
     "defaultRequire": 1
