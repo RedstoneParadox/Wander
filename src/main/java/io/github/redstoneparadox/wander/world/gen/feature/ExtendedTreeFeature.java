@@ -176,7 +176,7 @@ public class ExtendedTreeFeature extends Feature<TreeFeatureConfig> {
 		List<Set<BlockPos>> list = Lists.newArrayList();
 		VoxelSet voxelSet = new BitSetVoxelSet(box.getBlockCountX(), box.getBlockCountY(), box.getBlockCountZ());
 
-		for(int j = 0; j < 15; ++j) {
+		for(int j = 0; j < 14; ++j) {
 			list.add(Sets.newHashSet());
 		}
 
@@ -214,7 +214,7 @@ public class ExtendedTreeFeature extends Feature<TreeFeatureConfig> {
 			}
 		}
 
-		for(int k = 1; k < 15; ++k) {
+		for(int k = 1; k < 14; ++k) {
 			Set<BlockPos> set2 = (Set)list.get(k - 1);
 			Set<BlockPos> set3 = (Set)list.get(k);
 
@@ -227,7 +227,7 @@ public class ExtendedTreeFeature extends Feature<TreeFeatureConfig> {
 					mutable.set(blockPos2, direction2);
 					if (!set2.contains(mutable) && !set3.contains(mutable)) {
 						BlockState blockState2 = world.getBlockState(mutable);
-						if (blockState2.contains(Properties.DISTANCE_1_7) && !(k < 6)) {
+						if (blockState2.contains(Properties.DISTANCE_1_7) && (k < 6)) {
 							int l = blockState2.get(Properties.DISTANCE_1_7);
 							if (l > k + 1) {
 								BlockState blockState3 = blockState2.with(Properties.DISTANCE_1_7, k + 1);
