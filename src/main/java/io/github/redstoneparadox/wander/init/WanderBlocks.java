@@ -1,6 +1,7 @@
 package io.github.redstoneparadox.wander.init;
 
 import io.github.redstoneparadox.wander.Wander;
+import io.github.redstoneparadox.wander.block.ExtendedLeavesBlock;
 import io.github.redstoneparadox.wander.block.HollowLogBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -50,7 +51,7 @@ public class WanderBlocks {
 	);
 	public static final Block WILLOW_LEAVES = register(
 			Wander.id("willow_leaves"),
-			createLeavesBlock(BlockSoundGroup.GRASS)
+			createExtendedLeavesBlock(BlockSoundGroup.GRASS)
 	);
 
 
@@ -76,6 +77,19 @@ public class WanderBlocks {
 
 	private static LeavesBlock createLeavesBlock(BlockSoundGroup soundGroup) {
 		return new LeavesBlock(
+				AbstractBlock.Settings.of(Material.LEAVES)
+						.strength(0.2F)
+						.ticksRandomly()
+						.sounds(soundGroup)
+						.nonOpaque()
+						.allowsSpawning(WanderBlocks::canSpawnOnLeaves)
+						.suffocates(WanderBlocks::never)
+						.blockVision(WanderBlocks::never)
+		);
+	}
+
+	private static ExtendedLeavesBlock createExtendedLeavesBlock(BlockSoundGroup soundGroup) {
+		return new ExtendedLeavesBlock(
 				AbstractBlock.Settings.of(Material.LEAVES)
 						.strength(0.2F)
 						.ticksRandomly()
