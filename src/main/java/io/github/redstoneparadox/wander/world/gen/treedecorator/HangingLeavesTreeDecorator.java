@@ -2,10 +2,14 @@ package io.github.redstoneparadox.wander.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.redstoneparadox.wander.block.ExtendedLeavesBlock;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
+import io.github.redstoneparadox.wander.util.IntBox;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.TestableWorld;
@@ -54,14 +58,38 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
 		List<BlockPos> possiblePositions = new ArrayList<>(leafPositions);
 		possiblePositions = possiblePositions.stream().filter(pos -> world.testBlockState(pos.down(), BlockState::isAir)).toList();
 
+
 		for (BlockPos pos: possiblePositions) {
 			if (random.nextFloat() < probability) {
 				int length = random.nextInt(leafLength.get(random) + 1);
+				IntBox distance = new IntBox(1);
+
+				world.testBlockState(pos, state -> {
+					if (state.contains(LeavesBlock.DISTANCE)) {
+						distance.value = state.get(LeavesBlock.DISTANCE);
+					} else if (state.contains(ExtendedLeavesBlock.DISTANCE)) {
+						distance.value = state.get(ExtendedLeavesBlock.DISTANCE);
+					}
+
+					return true;
+				});
 
 				for (int i = 0; i < length; i++) {
+					distance.value += 1;
+
+					if (distance.value >= 15) {
+						return;
+					}
+
 					BlockPos pos2 = pos.down(i + 1);
 					if (!world.testBlockState(pos2, canReplace::contains)) break;
-					replacer.accept(pos2, leafState);
+					if (leafState.contains(LeavesBlock.DISTANCE)) {
+						replacer.accept(pos2, leafState.with(LeavesBlock.DISTANCE, distance.value));
+					} else if (leafState.contains(ExtendedLeavesBlock.DISTANCE)) {
+						replacer.accept(pos2, leafState.with(ExtendedLeavesBlock.DISTANCE, distance.value));
+					} else {
+						replacer.accept(pos2, leafState);
+					}
 				}
 			}
 		}

@@ -7,7 +7,6 @@
     "ConfiguredFeatureUtilMixin",
     "TreeDecoratorTypeInvoker",
     "TreeFeatureConfigMixin",
-    "TreeFeatureMixin",
     "TrunkPlacerTypeInvoker"
   ],
   "injectors": {

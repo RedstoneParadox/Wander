@@ -127,7 +127,7 @@ public class WanderConfiguredFeatures {
 	);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> WILLOW_TREE = register(
 			Wander.id("willow"),
-			Feature.TREE,
+			WanderFeatures.EXTENDED_TREE,
 			new TreeFeatureConfig.Builder(
 					BlockStateProvider.of(WanderBlocks.WILLOW_LOG),
 					new WillowTrunkPlacer(
