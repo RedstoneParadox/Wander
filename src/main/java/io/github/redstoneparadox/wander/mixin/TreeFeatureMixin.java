@@ -40,19 +40,37 @@ public class TreeFeatureMixin {
 		}
 	}
 
-	@Inject(method = "placeLogsAndLeaves", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/WorldAccess;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;", ordinal = 1), locals = LocalCapture.CAPTURE_FAILEXCEPTION)
-	private static void placeLogsAndLeaves_doSomethingElseWithExtendedLeaves(WorldAccess world, BlockBox box, Set<BlockPos> trunkPositions, Set<BlockPos> decorationPositions, Set<BlockPos> set, CallbackInfoReturnable<VoxelSet> cir, List list, VoxelSet voxelSet, int i, BlockPos.Mutable mutable, int k, Set set2, Set set3, Iterator var12, BlockPos blockPos2, Direction[] var14, int var15, int var16, Direction direction2) {
-		BlockState blockState2 = world.getBlockState(mutable);
-		if (blockState2.contains(ExtendedLeavesBlock.DISTANCE)) {
-			int l = blockState2.get(ExtendedLeavesBlock.DISTANCE);
-			if (l > k + 1) {
-				BlockState blockState3 = blockState2.with(ExtendedLeavesBlock.DISTANCE, k + 1);
-				setBlockStateWithoutUpdatingNeighbors(world, mutable, blockState3);
-				if (box.contains(mutable)) {
-					voxelSet.set(mutable.getX() - box.getMinX(), mutable.getY() - box.getMinY(), mutable.getZ() - box.getMinZ());
+	@Inject(method = "placeLogsAndLeaves", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILEXCEPTION)
+	private static void placeLogsAndLeaves_doSomethingElseWithExtendedLeaves(WorldAccess world, BlockBox box, Set<BlockPos> trunkPositions, Set<BlockPos> decorationPositions, Set<BlockPos> set, CallbackInfoReturnable<VoxelSet> cir, List list, VoxelSet voxelSet) {
+		BlockPos.Mutable mutable = new BlockPos.Mutable();
+
+		for(int k = 1; k < 14; ++k) {
+			Set<BlockPos> set2 = (Set)list.get(k - 1);
+			Set<BlockPos> set3 = (Set)list.get(k);
+
+			for(BlockPos blockPos2 : set2) {
+				if (box.contains(blockPos2)) {
+					voxelSet.set(blockPos2.getX() - box.getMinX(), blockPos2.getY() - box.getMinY(), blockPos2.getZ() - box.getMinZ());
 				}
 
-				set3.add(mutable.toImmutable());
+				for(Direction direction2 : Direction.values()) {
+					mutable.set(blockPos2, direction2);
+					if (!set2.contains(mutable) && !set3.contains(mutable)) {
+						BlockState blockState2 = world.getBlockState(mutable);
+						if (blockState2.contains(ExtendedLeavesBlock.DISTANCE)) {
+							int l = blockState2.get(ExtendedLeavesBlock.DISTANCE);
+							if (l > k + 1) {
+								BlockState blockState3 = blockState2.with(ExtendedLeavesBlock.DISTANCE, k + 1);
+								setBlockStateWithoutUpdatingNeighbors(world, mutable, blockState3);
+								if (box.contains(mutable)) {
+									voxelSet.set(mutable.getX() - box.getMinX(), mutable.getY() - box.getMinY(), mutable.getZ() - box.getMinZ());
+								}
+
+								set3.add(mutable.toImmutable());
+							}
+						}
+					}
+				}
 			}
 		}
 	}
