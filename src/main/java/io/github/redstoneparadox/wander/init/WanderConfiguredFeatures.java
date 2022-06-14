@@ -131,11 +131,11 @@ public class WanderConfiguredFeatures {
 			new TreeFeatureConfig.Builder(
 					BlockStateProvider.of(Blocks.OAK_LOG),
 					new WillowTrunkPlacer(
-							6, 4, 4, UniformIntProvider.create(1, 2), 0.75F, UniformIntProvider.create(2, 3), Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), 6
+							3, 1, 2, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(5, 7), UniformIntProvider.create(6, 9)
 					),
 					BlockStateProvider.of(Blocks.JUNGLE_LEAVES),
 					// new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 30),
-					new BlobFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), 1),
+					new BlobFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), 2),
 					Optional.empty(),
 					new TwoLayersFeatureSize(3, 0, 2)
 			)

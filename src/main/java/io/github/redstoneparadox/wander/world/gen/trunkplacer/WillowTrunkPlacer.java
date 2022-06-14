@@ -28,26 +28,21 @@ public class WillowTrunkPlacer extends TrunkPlacer {
 					Codec.intRange(0, 32).fieldOf("base_height").forGetter(placer -> placer.baseHeight),
 					Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter(placer -> placer.firstRandomHeight),
 					Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter(placer -> placer.secondRandomHeight),
-					IntProvider.VALUE_CODEC.fieldOf("extra_branch_steps").forGetter(placer -> placer.extraBranchSteps),
-					Codec.FLOAT.fieldOf("place_branch_per_log_probability").forGetter(placer -> placer.placeBranchPerLogProbability),
-					IntProvider.VALUE_CODEC.fieldOf("extra_branch_length").forGetter(placer -> placer.extraBranchLength),
 					RegistryCodecs.homogeneousList(Registry.BLOCK_KEY).fieldOf("can_grow_through").forGetter(placer -> placer.canGrowThrough),
-					Codec.INT.fieldOf("min_branch_height").forGetter(placer -> placer.minBranchHeight)
+					IntProvider.VALUE_CODEC.fieldOf("branch_length").forGetter(placer -> placer.branchLength),
+					IntProvider.VALUE_CODEC.fieldOf("branch_height").forGetter(placer -> placer.branchHeight)
 			).apply(instance, WillowTrunkPlacer::new)
 	);
-	private final IntProvider extraBranchSteps;
-	private final float placeBranchPerLogProbability;
-	private final IntProvider extraBranchLength;
-	private final HolderSet<Block> canGrowThrough;
-	private final int minBranchHeight;
 
-	public WillowTrunkPlacer(int i, int j, int k, IntProvider extraBranchSteps, float placeBranchPerLogProbability, IntProvider extraBranchLength, HolderSet<Block> canGrowThrough, int minBranchHeight) {
+	private final HolderSet<Block> canGrowThrough;
+	private final IntProvider branchLength;
+	private final IntProvider branchHeight;
+
+	public WillowTrunkPlacer(int i, int j, int k, HolderSet<Block> canGrowThrough, IntProvider branchLength, IntProvider branchHeight) {
 		super(i, j, k);
-		this.extraBranchSteps = extraBranchSteps;
-		this.placeBranchPerLogProbability = placeBranchPerLogProbability;
-		this.extraBranchLength = extraBranchLength;
 		this.canGrowThrough = canGrowThrough;
-		this.minBranchHeight = minBranchHeight;
+		this.branchLength = branchLength;
+		this.branchHeight = branchHeight;
 	}
 
 	@Override
@@ -60,92 +55,37 @@ public class WillowTrunkPlacer extends TrunkPlacer {
 			TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, RandomGenerator randomGenerator, int height, BlockPos startPos, TreeFeatureConfig config
 	) {
 		List<FoliagePlacer.TreeNode> nodes = Lists.<FoliagePlacer.TreeNode>newArrayList();
-		BlockPos.Mutable mutable = new BlockPos.Mutable();
 
 		for(int i = 0; i < height; ++i) {
-			int j = startPos.getY() + i;
-			if (this.method_35375(world, replacer, randomGenerator, mutable.set(startPos.getX(), j, startPos.getZ()), config)
-					&& i < height - 1
-					&& randomGenerator.nextFloat() < this.placeBranchPerLogProbability
-					&& i >= minBranchHeight // Copied the Mangrove trunk placer just so I could make this check, lol.
-			) {
-				Direction direction = Direction.Type.HORIZONTAL.random(randomGenerator);
-				int length = this.extraBranchLength.get(randomGenerator);
-				// int l = Math.max(0, k - this.extraBranchLength.get(randomGenerator) - 1);
-				int steps = this.extraBranchSteps.get(randomGenerator);
-				// this.generateBranchOld(world, replacer, randomGenerator, height, config, nodes, mutable, j, direction, l, m);
-				generateBranch(world, replacer, randomGenerator, config, nodes, mutable, direction, length);
-			}
+			method_35375(world, replacer, randomGenerator, startPos.up(i), config);
+		}
 
-			if (i == height - 1) {
-				nodes.add(new FoliagePlacer.TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 0, false));
-			}
+		for (Direction direction: new Direction[] { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST }) {
+			generateBranch(world, replacer, randomGenerator, startPos.up(height - 1), direction, nodes, config);
 		}
 
 		return nodes;
 	}
 
 	private void generateBranch(
-			TestableWorld testableWorld,
-			BiConsumer<BlockPos, BlockState> biConsumer,
+			TestableWorld world,
+			BiConsumer<BlockPos, BlockState> replacer,
 			RandomGenerator randomGenerator,
-			TreeFeatureConfig treeFeatureConfig,
+			BlockPos start,
+			Direction direction,
 			List<FoliagePlacer.TreeNode> nodes,
-			BlockPos.Mutable mutable,
-			Direction direction,
-			int length
-	) {
-		BlockPos start = mutable.toImmutable();
+			TreeFeatureConfig config
+			)
+	{
+		int length = branchLength.get(randomGenerator);
+		int height = branchHeight.get(randomGenerator);
 
-		for (int i = 1; i <= length; i++) {
-			this.method_35375(testableWorld, biConsumer, randomGenerator, start.offset(direction, i), treeFeatureConfig);
-			nodes.add(new FoliagePlacer.TreeNode(start.offset(direction, i), 0, false));
+		for (int i = 0; i < length; i++) {
+			int y = (int) Math.floor(height * Math.sqrt(1 - Math.pow((double) i /length - 1, 2.0)));
+			method_35375(world, replacer, randomGenerator, start.offset(direction, i).up(y), config);
 
-			if (i == length) {
-				nodes.add(new FoliagePlacer.TreeNode(start.offset(direction, i), 0, false));
-			}
+			nodes.add(new FoliagePlacer.TreeNode(start.offset(direction, i).up(y + 1), 0, false));
 		}
-	}
-
-	private void generateBranchOld(
-			TestableWorld testableWorld,
-			BiConsumer<BlockPos, BlockState> biConsumer,
-			RandomGenerator randomGenerator,
-			int i,
-			TreeFeatureConfig treeFeatureConfig,
-			List<FoliagePlacer.TreeNode> list,
-			BlockPos.Mutable mutable,
-			int j,
-			Direction direction,
-			int k,
-			int l
-	) {
-		int m = j + k;
-		int n = mutable.getX();
-		int o = mutable.getZ();
-
-		for(int p = k; p < i && l > 0; --l) {
-			if (p >= 1) {
-				int q = j + p;
-				n += direction.getOffsetX();
-				o += direction.getOffsetZ();
-				m = q;
-				if (this.method_35375(testableWorld, biConsumer, randomGenerator, mutable.set(n, q, o), treeFeatureConfig)) {
-					m = q + 1;
-				}
-
-				list.add(new FoliagePlacer.TreeNode(mutable.toImmutable(), 0, false));
-			}
-
-			++p;
-		}
-
-		if (m - j > 1) {
-			BlockPos blockPos = new BlockPos(n, m, o);
-			list.add(new FoliagePlacer.TreeNode(blockPos, 0, false));
-			list.add(new FoliagePlacer.TreeNode(blockPos.down(2), 0, false));
-		}
-
 	}
 
 	@Override
