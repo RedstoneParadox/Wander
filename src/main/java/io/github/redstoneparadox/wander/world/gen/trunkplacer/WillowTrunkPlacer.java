@@ -82,7 +82,22 @@ public class WillowTrunkPlacer extends TrunkPlacer {
 
 		for (int i = 0; i < length; i++) {
 			int y = (int) Math.floor(height * Math.sqrt(1 - Math.pow((double) i /length - 1, 2.0)));
-			method_35375(world, replacer, randomGenerator, start.offset(direction, i).up(y), config);
+
+			if (i < length - 1) {
+				int nextY = (int) Math.floor(height * Math.sqrt(1 - Math.pow((double) (i + 1) /length - 1, 2.0)));
+
+				if (y == nextY) {
+					method_35375(world, replacer, randomGenerator, start.offset(direction, i).up(y), config);
+				} else {
+					while (y <= nextY - 1) {
+						method_35375(world, replacer, randomGenerator, start.offset(direction, i).up(y), config);
+						y += 1;
+					}
+				}
+
+			} else {
+				method_35375(world, replacer, randomGenerator, start.offset(direction, i).up(y), config);
+			}
 
 			nodes.add(new FoliagePlacer.TreeNode(start.offset(direction, i).up(y + 1), 0, false));
 		}

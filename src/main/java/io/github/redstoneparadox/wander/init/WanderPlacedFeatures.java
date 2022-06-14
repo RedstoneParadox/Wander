@@ -17,6 +17,7 @@ import net.minecraft.world.gen.decorator.HeightRangePlacementModifier;
 import net.minecraft.world.gen.decorator.HeightmapPlacementModifier;
 import net.minecraft.world.gen.decorator.InSquarePlacementModifier;
 import net.minecraft.world.gen.decorator.NoiseThresholdCountPlacementModifier;
+import net.minecraft.world.gen.decorator.SurfaceWaterDepthFilterPlacementModifier;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
 
@@ -63,6 +64,19 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
+	public static final Holder<PlacedFeature> WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
+			Wander.id("willow_swamp").toString(),
+			WanderConfiguredFeatures.WILLOW_TREE,
+			PlacedFeatureUtil.createCountExtraModifier(1, 0.1F, 1),
+			InSquarePlacementModifier.getInstance(),
+			SurfaceWaterDepthFilterPlacementModifier.create(2),
+			PlacedFeatureUtil.OCEAN_FLOOR_HEIGHTMAP,
+			BiomePlacementModifier.getInstance(),
+			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
+	);
+
+
+	// For saplings
 	public static final Holder<PlacedFeature> WILLOW_TREE = PlacedFeatureUtil.register(
 			Wander.id("willow").toString(),
 			WanderConfiguredFeatures.WILLOW_TREE,
@@ -80,7 +94,7 @@ public class WanderPlacedFeatures {
 		);
 		BiomeModifications.addFeature(
 				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key("willow")
+				GenerationStep.Feature.VEGETAL_DECORATION, key("willow_swamp")
 		);
 	}
 

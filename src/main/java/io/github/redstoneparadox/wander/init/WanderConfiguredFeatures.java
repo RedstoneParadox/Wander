@@ -131,11 +131,11 @@ public class WanderConfiguredFeatures {
 			new TreeFeatureConfig.Builder(
 					BlockStateProvider.of(Blocks.OAK_LOG),
 					new WillowTrunkPlacer(
-							3, 1, 2, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(5, 7), UniformIntProvider.create(6, 9)
+							2, 1, 2, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(4, 6), UniformIntProvider.create(6, 9)
 					),
 					BlockStateProvider.of(Blocks.JUNGLE_LEAVES),
-					// new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 30),
-					new BlobFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), 2),
+					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 70),
+					// new BlobFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), 2),
 					Optional.empty(),
 					new TwoLayersFeatureSize(3, 0, 2)
 			)
@@ -157,8 +157,8 @@ public class WanderConfiguredFeatures {
 							new HangingLeavesTreeDecorator(
 									Blocks.JUNGLE_LEAVES.getDefaultState().with(LeavesBlock.PERSISTENT, true),
 									List.of(Blocks.AIR.getDefaultState()),
-									UniformIntProvider.create(3, 6),
-									0.4f
+									UniformIntProvider.create(4, 8),
+									0.5f
 							)
 					))
 					.ignoreVines()
