@@ -134,7 +134,7 @@ public class WanderConfiguredFeatures {
 							2, 1, 2, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(4, 6), UniformIntProvider.create(6, 9)
 					),
 					BlockStateProvider.of(Blocks.JUNGLE_LEAVES),
-					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 70),
+					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(3), 70),
 					// new BlobFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), 2),
 					Optional.empty(),
 					new TwoLayersFeatureSize(3, 0, 2)
