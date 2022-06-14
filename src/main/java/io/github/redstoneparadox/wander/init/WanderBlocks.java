@@ -38,12 +38,25 @@ public class WanderBlocks {
 			createHollowLogBlock(MapColor.BROWN, MapColor.BROWN)
 	);
 
+	public static final Block WILLOW_LOG = register(
+			Wander.id("willow_log"),
+			createLogBlock(MapColor.PALE_GREEN, MapColor.BROWN)
+	);
+
 	private static Identifier hollowid(String name) {
 		return Wander.id("hollow_" + name + "_log");
 	}
 
 	private static PillarBlock createHollowLogBlock(MapColor topMapColor, MapColor sideMapColor) {
 		return new HollowLogBlock(
+				AbstractBlock.Settings.of(Material.WOOD, state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor)
+						.strength(2.0F)
+						.sounds(BlockSoundGroup.WOOD)
+		);
+	}
+
+	private static PillarBlock createLogBlock(MapColor topMapColor, MapColor sideMapColor) {
+		return new PillarBlock(
 				AbstractBlock.Settings.of(Material.WOOD, state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMapColor : sideMapColor)
 						.strength(2.0F)
 						.sounds(BlockSoundGroup.WOOD)

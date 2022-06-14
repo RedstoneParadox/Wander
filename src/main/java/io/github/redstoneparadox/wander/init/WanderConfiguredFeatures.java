@@ -129,7 +129,7 @@ public class WanderConfiguredFeatures {
 			Wander.id("willow"),
 			Feature.TREE,
 			new TreeFeatureConfig.Builder(
-					BlockStateProvider.of(Blocks.OAK_LOG),
+					BlockStateProvider.of(WanderBlocks.WILLOW_LOG),
 					new WillowTrunkPlacer(
 							2, 1, 2, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(4, 6), UniformIntProvider.create(6, 9)
 					),
