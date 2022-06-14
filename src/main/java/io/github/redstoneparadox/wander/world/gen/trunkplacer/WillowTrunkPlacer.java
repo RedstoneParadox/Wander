@@ -59,7 +59,7 @@ public class WillowTrunkPlacer extends TrunkPlacer {
 	public List<FoliagePlacer.TreeNode> generate(
 			TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, RandomGenerator randomGenerator, int height, BlockPos startPos, TreeFeatureConfig config
 	) {
-		List<FoliagePlacer.TreeNode> list = Lists.<FoliagePlacer.TreeNode>newArrayList();
+		List<FoliagePlacer.TreeNode> nodes = Lists.<FoliagePlacer.TreeNode>newArrayList();
 		BlockPos.Mutable mutable = new BlockPos.Mutable();
 
 		for(int i = 0; i < height; ++i) {
@@ -70,21 +70,44 @@ public class WillowTrunkPlacer extends TrunkPlacer {
 					&& i >= minBranchHeight // Copied the Mangrove trunk placer just so I could make this check, lol.
 			) {
 				Direction direction = Direction.Type.HORIZONTAL.random(randomGenerator);
-				int k = this.extraBranchLength.get(randomGenerator);
-				int l = Math.max(0, k - this.extraBranchLength.get(randomGenerator) - 1);
-				int m = this.extraBranchSteps.get(randomGenerator);
-				this.generateBranch(world, replacer, randomGenerator, height, config, list, mutable, j, direction, l, m);
+				int length = this.extraBranchLength.get(randomGenerator);
+				// int l = Math.max(0, k - this.extraBranchLength.get(randomGenerator) - 1);
+				int steps = this.extraBranchSteps.get(randomGenerator);
+				// this.generateBranchOld(world, replacer, randomGenerator, height, config, nodes, mutable, j, direction, l, m);
+				generateBranch(world, replacer, randomGenerator, config, nodes, mutable, direction, length);
 			}
 
 			if (i == height - 1) {
-				list.add(new FoliagePlacer.TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 0, false));
+				nodes.add(new FoliagePlacer.TreeNode(mutable.set(startPos.getX(), j + 1, startPos.getZ()), 0, false));
 			}
 		}
 
-		return list;
+		return nodes;
 	}
 
 	private void generateBranch(
+			TestableWorld testableWorld,
+			BiConsumer<BlockPos, BlockState> biConsumer,
+			RandomGenerator randomGenerator,
+			TreeFeatureConfig treeFeatureConfig,
+			List<FoliagePlacer.TreeNode> nodes,
+			BlockPos.Mutable mutable,
+			Direction direction,
+			int length
+	) {
+		BlockPos start = mutable.toImmutable();
+
+		for (int i = 1; i <= length; i++) {
+			this.method_35375(testableWorld, biConsumer, randomGenerator, start.offset(direction, i), treeFeatureConfig);
+			nodes.add(new FoliagePlacer.TreeNode(start.offset(direction, i), 0, false));
+
+			if (i == length) {
+				nodes.add(new FoliagePlacer.TreeNode(start.offset(direction, i), 0, false));
+			}
+		}
+	}
+
+	private void generateBranchOld(
 			TestableWorld testableWorld,
 			BiConsumer<BlockPos, BlockState> biConsumer,
 			RandomGenerator randomGenerator,

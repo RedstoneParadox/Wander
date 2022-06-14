@@ -10,6 +10,7 @@ import io.github.redstoneparadox.wander.world.gen.trunkplacer.WillowTrunkPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.MangrovePropaguleBlock;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.unmapped.C_dkqjnekb;
@@ -125,15 +126,16 @@ public class WanderConfiguredFeatures {
 			)
 	);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> WILLOW_TREE = register(
-			Wander.id("willow_tree"),
+			Wander.id("willow"),
 			Feature.TREE,
 			new TreeFeatureConfig.Builder(
 					BlockStateProvider.of(Blocks.OAK_LOG),
 					new WillowTrunkPlacer(
-							5, 2, 6, UniformIntProvider.create(1, 4), 0.95F, UniformIntProvider.create(3, 6), Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), 5
+							6, 4, 4, UniformIntProvider.create(1, 2), 0.75F, UniformIntProvider.create(2, 3), Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), 6
 					),
 					BlockStateProvider.of(Blocks.JUNGLE_LEAVES),
-					new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 70),
+					// new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 30),
+					new BlobFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), 1),
 					Optional.empty(),
 					new TwoLayersFeatureSize(3, 0, 2)
 			)
@@ -153,10 +155,10 @@ public class WanderConfiguredFeatures {
 							),
 							BEES_001,
 							new HangingLeavesTreeDecorator(
-									Blocks.JUNGLE_LEAVES.getDefaultState(),
+									Blocks.JUNGLE_LEAVES.getDefaultState().with(LeavesBlock.PERSISTENT, true),
 									List.of(Blocks.AIR.getDefaultState()),
 									UniformIntProvider.create(3, 6),
-									0.2f
+									0.4f
 							)
 					))
 					.ignoreVines()

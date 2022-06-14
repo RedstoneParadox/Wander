@@ -64,7 +64,7 @@ public class WanderPlacedFeatures {
 			BiomePlacementModifier.getInstance()
 	);
 	public static final Holder<PlacedFeature> WILLOW_TREE = PlacedFeatureUtil.register(
-			Wander.id("willow_tree").toString(),
+			Wander.id("willow").toString(),
 			WanderConfiguredFeatures.WILLOW_TREE,
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
@@ -80,7 +80,7 @@ public class WanderPlacedFeatures {
 		);
 		BiomeModifications.addFeature(
 				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key("willow_tree")
+				GenerationStep.Feature.VEGETAL_DECORATION, key("willow")
 		);
 	}
 
