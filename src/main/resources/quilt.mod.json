@@ -19,7 +19,8 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "io.github.redstoneparadox.wander.Wander"
+			"init": "io.github.redstoneparadox.wander.Wander",
+			"client_init": "io.github.redstoneparadox.wander.WanderClient"
 		},
 		"depends": [
 			{
