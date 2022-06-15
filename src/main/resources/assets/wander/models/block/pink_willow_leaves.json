@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "wander:block/willow_leaves"
+    "all": "wander:block/pink_willow_leaves"
   }
 }
