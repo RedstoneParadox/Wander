@@ -68,7 +68,7 @@ public class WanderItems {
 	public static final Item PINK_WILLOW_LEAVES = register(
 			Wander.id("pink_willow_leaves"),
 			new BlockItem(
-					WanderBlocks.WILLOW_LEAVES,
+					WanderBlocks.PINK_WILLOW_LEAVES,
 					new QuiltItemSettings().group(ItemGroup.DECORATIONS)
 			)
 	);

@@ -4,6 +4,7 @@ import io.github.redstoneparadox.wander.init.WanderBlocks;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.biome.BiomeColorProvider;
 import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.world.biome.Biome;
 import org.quiltmc.loader.api.ModContainer;
@@ -17,7 +18,8 @@ public class WanderClient implements ClientModInitializer {
 			assert blockRenderView != null;
 			return blockRenderView.getColor(blockPos, BiomeColors.FOLIAGE_COLOR);
 		}, WanderBlocks.WILLOW_LEAVES);
+		ColorProviderRegistry.ITEM.register((itemStack, i) -> FoliageColors.getDefaultColor());
 
-		BlockRenderLayerMap.put(RenderLayer.getCutout(), WanderBlocks.WILLOW_LEAVES);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), WanderBlocks.WILLOW_LEAVES, WanderBlocks.PINK_WILLOW_LEAVES);
 	}
 }
