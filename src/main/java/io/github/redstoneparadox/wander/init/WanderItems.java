@@ -62,7 +62,14 @@ public class WanderItems {
 			Wander.id("willow_leaves"),
 			new BlockItem(
 					WanderBlocks.WILLOW_LEAVES,
-					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
+					new QuiltItemSettings().group(ItemGroup.DECORATIONS)
+			)
+	);
+	public static final Item PINK_WILLOW_LEAVES = register(
+			Wander.id("pink_willow_leaves"),
+			new BlockItem(
+					WanderBlocks.WILLOW_LEAVES,
+					new QuiltItemSettings().group(ItemGroup.DECORATIONS)
 			)
 	);
 

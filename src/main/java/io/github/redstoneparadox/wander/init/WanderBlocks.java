@@ -53,6 +53,10 @@ public class WanderBlocks {
 			Wander.id("willow_leaves"),
 			createExtendedLeavesBlock(BlockSoundGroup.GRASS)
 	);
+	public static final Block PINK_WILLOW_LEAVES = register(
+			Wander.id("pink_willow_leaves"),
+			createExtendedLeavesBlock(BlockSoundGroup.GRASS)
+	);
 
 
 	private static Identifier hollowid(String name) {
