@@ -78,22 +78,24 @@ public class WanderPlacedFeatures {
 
 
 	public static void addFeaturesToVanilla() {
-		BiomeModifications.addFeature(
-				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key("fallen_oak_tree_common")
-		);
-		BiomeModifications.addFeature(
-				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key("submerged_fallen_oak_tree")
-		);
-		BiomeModifications.addFeature(
-				ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-				GenerationStep.Feature.VEGETAL_DECORATION, key("willows_regular_and_pink_swamp")
-		);
-	}
-
-	private static RegistryKey<PlacedFeature> key(String name) {
-		return RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), Wander.id(name));
+		if (FALLEN_OAK_TREE_COMMON.getKey().isPresent()) {
+			BiomeModifications.addFeature(
+					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
+					GenerationStep.Feature.VEGETAL_DECORATION, FALLEN_OAK_TREE_COMMON.getKey().get()
+			);
+		}
+		if (SUBMERGED_FALLEN_OAK_TREE.getKey().isPresent()) {
+			BiomeModifications.addFeature(
+					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
+					GenerationStep.Feature.VEGETAL_DECORATION, SUBMERGED_FALLEN_OAK_TREE.getKey().get()
+			);
+		}
+		if (WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().isPresent()) {
+			BiomeModifications.addFeature(
+					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
+					GenerationStep.Feature.VEGETAL_DECORATION, WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().get()
+			);
+		}
 	}
 
 	private static ImmutableList.Builder<PlacementModifier> treePlacementModifiersBase(PlacementModifier modifier) {
