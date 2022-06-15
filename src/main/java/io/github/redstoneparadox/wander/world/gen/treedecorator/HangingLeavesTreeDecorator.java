@@ -62,34 +62,10 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
 		for (BlockPos pos: possiblePositions) {
 			if (random.nextFloat() < probability) {
 				int length = random.nextInt(leafLength.get(random) + 1);
-				IntBox distance = new IntBox(1);
-
-				world.testBlockState(pos, state -> {
-					if (state.contains(LeavesBlock.DISTANCE)) {
-						distance.value = state.get(LeavesBlock.DISTANCE);
-					} else if (state.contains(ExtendedLeavesBlock.DISTANCE)) {
-						distance.value = state.get(ExtendedLeavesBlock.DISTANCE);
-					}
-
-					return true;
-				});
 
 				for (int i = 0; i < length; i++) {
-					distance.value += 1;
-
-					if (distance.value >= 15) {
-						return;
-					}
-
 					BlockPos pos2 = pos.down(i + 1);
-					if (!world.testBlockState(pos2, canReplace::contains)) break;
-					if (leafState.contains(LeavesBlock.DISTANCE)) {
-						replacer.accept(pos2, leafState.with(LeavesBlock.DISTANCE, distance.value));
-					} else if (leafState.contains(ExtendedLeavesBlock.DISTANCE)) {
-						replacer.accept(pos2, leafState.with(ExtendedLeavesBlock.DISTANCE, distance.value));
-					} else {
-						replacer.accept(pos2, leafState);
-					}
+					replacer.accept(pos2, leafState);
 				}
 			}
 		}
