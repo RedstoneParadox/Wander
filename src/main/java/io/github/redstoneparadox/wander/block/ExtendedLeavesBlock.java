@@ -107,7 +107,7 @@ public class ExtendedLeavesBlock extends Block implements Waterloggable {
 			return 0;
 		} else {
 			Block block = state.getBlock();
-			return block instanceof LeavesBlock || block instanceof ExtendedLeavesBlock ? state.get(DISTANCE) : 15;
+			return block instanceof LeavesBlock ? state.get(LeavesBlock.DISTANCE) : block instanceof ExtendedLeavesBlock ? state.get(DISTANCE) : 15;
 		}
 	}
 

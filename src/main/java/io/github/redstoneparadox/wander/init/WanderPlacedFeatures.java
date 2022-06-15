@@ -73,7 +73,7 @@ public class WanderPlacedFeatures {
 	public static Holder<PlacedFeature> WILLOWS_REGULAR_AND_PINK_SWAMP = PlacedFeatureUtil.register(
 			Wander.id("willows_regular_and_pink_swamp").toString(),
 			WanderConfiguredFeatures.WILLOWS_REGULAR_AND_PINK_SWAMP,
-			treePlacementModifiers(PlacedFeatureUtil.createCountExtraModifier(10, 0.1F, 1))
+			treePlacementModifiers(PlacedFeatureUtil.createCountExtraModifier(1, 0.1F, 1))
 	);
 
 

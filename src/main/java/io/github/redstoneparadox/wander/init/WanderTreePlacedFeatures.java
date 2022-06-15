@@ -13,21 +13,11 @@ public class WanderTreePlacedFeatures {
 	public static final Holder<PlacedFeature> WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
 			Wander.id("willow_swamp").toString(),
 			WanderTreeConfiguredFeatures.WILLOW_SWAMP,
-			PlacedFeatureUtil.createCountExtraModifier(1, 0.1F, 1),
-			InSquarePlacementModifier.getInstance(),
-			SurfaceWaterDepthFilterPlacementModifier.create(2),
-			PlacedFeatureUtil.OCEAN_FLOOR_HEIGHTMAP,
-			BiomePlacementModifier.getInstance(),
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 	public static final Holder<PlacedFeature> PINK_WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
 			Wander.id("pink_willow_swamp").toString(),
 			WanderTreeConfiguredFeatures.PINK_WILLOW_SWAMP,
-			PlacedFeatureUtil.createCountExtraModifier(1, 0.1F, 1),
-			InSquarePlacementModifier.getInstance(),
-			SurfaceWaterDepthFilterPlacementModifier.create(2),
-			PlacedFeatureUtil.OCEAN_FLOOR_HEIGHTMAP,
-			BiomePlacementModifier.getInstance(),
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 	// For saplings
