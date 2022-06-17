@@ -8,6 +8,8 @@ import io.github.redstoneparadox.wander.util.IntBox;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.Waterloggable;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -65,7 +67,11 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
 
 				for (int i = 0; i < length; i++) {
 					BlockPos pos2 = pos.down(i + 1);
-					replacer.accept(pos2, leafState);
+					if (leafState.contains(Properties.WATERLOGGED)) {
+						replacer.accept(pos2, leafState.with(Properties.WATERLOGGED, world.testBlockState(pos2, state -> state.isOf(Blocks.WATER))));
+					} else {
+						replacer.accept(pos2, leafState);
+					}
 				}
 			}
 		}
