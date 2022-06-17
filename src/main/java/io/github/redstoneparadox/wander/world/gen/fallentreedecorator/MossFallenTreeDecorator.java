@@ -40,8 +40,9 @@ public class MossFallenTreeDecorator extends FallenTreeDecorator {
 		for (BlockPos logPos: logPositions) {
 			for (Direction direction: new Direction[] {NORTH, SOUTH, EAST, WEST, UP}) {
 				BlockPos pos = logPos.offset(direction);
+				BlockState support = world.getBlockState(pos.down());
 
-				if (random.nextFloat() <= probability && !logPositions.contains(pos) && MOSS_CARPET.canPlaceAt(world, pos) && world.testBlockState(pos, BlockState::isAir)) {
+				if (random.nextFloat() <= probability && !logPositions.contains(pos) && support.isSolidBlock(world, pos.down())) {
 					world.setBlockState(pos, MOSS_CARPET, Block.NOTIFY_ALL);
 				}
 			}
