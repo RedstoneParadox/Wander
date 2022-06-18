@@ -13,17 +13,5 @@ public class WanderWorldgen {
 					GenerationStep.Feature.VEGETAL_DECORATION, WanderRandomPlacedFeatures.WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().get()
 			);
 		}
-		if (WanderPlacedFeatures.FALLEN_OAK_TREE_COMMON.getKey().isPresent()) {
-			BiomeModifications.addFeature(
-					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-					GenerationStep.Feature.VEGETAL_DECORATION, WanderPlacedFeatures.FALLEN_OAK_TREE_COMMON.getKey().get()
-			);
-		}
-		if (WanderPlacedFeatures.SUBMERGED_FALLEN_OAK_TREE.getKey().isPresent()) {
-			BiomeModifications.addFeature(
-					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-					GenerationStep.Feature.VEGETAL_DECORATION, WanderPlacedFeatures.SUBMERGED_FALLEN_OAK_TREE.getKey().get()
-			);
-		}
 	}
 }

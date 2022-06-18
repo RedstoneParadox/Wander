@@ -46,47 +46,6 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 	private static final HeightRangePlacementModifier BELOW_SEA_LEVEL = HeightRangePlacementModifier.createUniform(YOffset.BOTTOM, YOffset.fixed(61));
-	public static final Holder<PlacedFeature> FALLEN_OAK_TREE = PlacedFeatureUtil.register(
-			Wander.id("fallen_oak_tree").toString(),
-			WanderConfiguredFeatures.FALLEN_OAK_TREE,
-			NoiseThresholdCountPlacementModifier.create(-0.5, 1, 0),
-			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
-			BiomePlacementModifier.getInstance()
-	);
-	public static final Holder<PlacedFeature> FALLEN_OAK_TREE_COMMON = PlacedFeatureUtil.register(
-			Wander.id("fallen_oak_tree_common").toString(),
-			WanderConfiguredFeatures.FALLEN_OAK_TREE,
-			NoiseThresholdCountPlacementModifier.create(-0.5, 2, 1),
-			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
-			BiomePlacementModifier.getInstance()
-	);
-	public static final Holder<PlacedFeature> SUBMERGED_FALLEN_OAK_TREE = PlacedFeatureUtil.register(
-			Wander.id("submerged_fallen_oak_tree").toString(),
-			WanderConfiguredFeatures.SUBMERGED_FALLEN_OAK_TREE,
-			NoiseThresholdCountPlacementModifier.create(-0.8, 2, 1),
-			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.OCEAN_FLOOR_WG_HEIGHTMAP,
-			BiomePlacementModifier.getInstance(),
-			UnderwaterPlacementModifier.INSTANCE
-	);
-	public static final Holder<PlacedFeature> FALLEN_BIRCH_TREE = PlacedFeatureUtil.register(
-			Wander.id("fallen_birch_tree").toString(),
-			WanderConfiguredFeatures.FALLEN_BIRCH_TREE,
-			CountPlacementModifier.create(3),
-			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
-			BiomePlacementModifier.getInstance()
-	);
-	public static final Holder<PlacedFeature> OLD_FALLEN_BIRCH_TREE = PlacedFeatureUtil.register(
-			Wander.id("old_fallen_birch_tree").toString(),
-			WanderConfiguredFeatures.OLD_FALLEN_BIRCH_TREE,
-			CountPlacementModifier.create(3),
-			InSquarePlacementModifier.getInstance(),
-			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
-			BiomePlacementModifier.getInstance()
-	);
 
 
 	private static ImmutableList.Builder<PlacementModifier> treePlacementModifiersBase(PlacementModifier modifier) {
