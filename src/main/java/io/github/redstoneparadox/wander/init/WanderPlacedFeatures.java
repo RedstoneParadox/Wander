@@ -2,19 +2,18 @@ package io.github.redstoneparadox.wander.init;
 
 import com.google.common.collect.ImmutableList;
 import io.github.redstoneparadox.wander.Wander;
-import io.github.redstoneparadox.wander.world.gen.placementmodifiers.UnderwaterPlacementModifier;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Holder;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.decorator.BiomePlacementModifier;
 import net.minecraft.world.gen.decorator.BlockPredicateFilterPlacementModifier;
-import net.minecraft.world.gen.decorator.CountPlacementModifier;
 import net.minecraft.world.gen.decorator.HeightRangePlacementModifier;
 import net.minecraft.world.gen.decorator.InSquarePlacementModifier;
-import net.minecraft.world.gen.decorator.NoiseThresholdCountPlacementModifier;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacementModifier;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
@@ -45,8 +44,23 @@ public class WanderPlacedFeatures {
 			WanderConfiguredFeatures.PINK_WILLOW,
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
+
 	private static final HeightRangePlacementModifier BELOW_SEA_LEVEL = HeightRangePlacementModifier.createUniform(YOffset.BOTTOM, YOffset.fixed(61));
 
+	public static final Holder<PlacedFeature> FALLEN_OAK = register(
+			Wander.id("fallen_oak"),
+			WanderConfiguredFeatures.FALLEN_OAK,
+			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
+	);
+	public static final Holder<PlacedFeature> HOLLOW_FALLEN_OAK = register(
+			Wander.id("hollow_fallen_oak"),
+			WanderConfiguredFeatures.HOLLOW_FALLEN_OAK,
+			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
+	);
+
+	private static Holder<PlacedFeature> register(Identifier id, Holder<? extends ConfiguredFeature<?, ?>> configuredFeature, List<PlacementModifier> modifiers) {
+		return PlacedFeatureUtil.register(id.toString(), configuredFeature, modifiers);
+	}
 
 	private static ImmutableList.Builder<PlacementModifier> treePlacementModifiersBase(PlacementModifier modifier) {
 		return ImmutableList.<PlacementModifier>builder()

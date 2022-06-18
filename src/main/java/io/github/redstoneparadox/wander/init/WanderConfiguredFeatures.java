@@ -2,6 +2,7 @@ package io.github.redstoneparadox.wander.init;
 
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.block.HollowLogBlock;
+import io.github.redstoneparadox.wander.util.DirectionProvider;
 import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.FoliageFallenTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.MossFallenTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
@@ -37,6 +38,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class WanderConfiguredFeatures {
+	// Trees
 	protected static final BeehiveTreeDecorator BEES_001 = new BeehiveTreeDecorator(0.01F);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> PINK_WILLOW_SWAMP = register(
 			Wander.id("pink_willow_swamp"),
@@ -57,6 +59,36 @@ public class WanderConfiguredFeatures {
 			Wander.id("willow"),
 			WanderFeatures.EXTENDED_TREE,
 			willowConfig(false, false)
+	);
+
+	// Fallen Trees
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_OAK = register(
+			Wander.id("fallen_oak"),
+			WanderFeatures.FALLEN_TREE,
+			new FallenTreeFeatureConfig(
+					Blocks.OAK_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(Blocks.OAK_LOG),
+					UniformIntProvider.create(3, 6),
+					new DirectionProvider(true),
+					false,
+					List.of(
+							new MossFallenTreeDecorator(0.2f)
+					)
+			)
+	);
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> HOLLOW_FALLEN_OAK = register(
+			Wander.id("hollow_fallen_oak"),
+			WanderFeatures.FALLEN_TREE,
+			new FallenTreeFeatureConfig(
+					Blocks.OAK_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_OAK_LOG),
+					UniformIntProvider.create(3, 6),
+					new DirectionProvider(true),
+					false,
+					List.of(
+							new MossFallenTreeDecorator(0.2f)
+					)
+			)
 	);
 
 	public static <FC extends FeatureConfig, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> register(Identifier id, F feature, FC featureConfig) {
@@ -89,9 +121,5 @@ public class WanderConfiguredFeatures {
 				.decorators(decorators)
 				.ignoreVines()
 				.build();
-	}
-
-	private static IntProvider direction() {
-		return UniformIntProvider.create(0, 3);
 	}
 }
