@@ -4,12 +4,9 @@ import com.google.common.collect.ImmutableList;
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.world.gen.placementmodifiers.UnderwaterPlacementModifier;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.Holder;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.decorator.BiomePlacementModifier;
@@ -21,13 +18,33 @@ import net.minecraft.world.gen.decorator.NoiseThresholdCountPlacementModifier;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacementModifier;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
-import org.quiltmc.qsl.worldgen.biome.api.BiomeModifications;
 
 import java.util.List;
 
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.TREE_THRESHOLD;
 
 public class WanderPlacedFeatures {
+	public static final Holder<PlacedFeature> WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
+			Wander.id("willow_swamp").toString(),
+			WanderConfiguredFeatures.WILLOW_SWAMP,
+			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
+	);
+	public static final Holder<PlacedFeature> PINK_WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
+			Wander.id("pink_willow_swamp").toString(),
+			WanderConfiguredFeatures.PINK_WILLOW_SWAMP,
+			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
+	);
+	// For saplings
+	public static final Holder<PlacedFeature> WILLOW = PlacedFeatureUtil.register(
+			Wander.id("willow").toString(),
+			WanderConfiguredFeatures.WILLOW,
+			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
+	);
+	public static final Holder<PlacedFeature> PINK_WILLOW = PlacedFeatureUtil.register(
+			Wander.id("pink_willow").toString(),
+			WanderConfiguredFeatures.PINK_WILLOW,
+			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
+	);
 	private static final HeightRangePlacementModifier BELOW_SEA_LEVEL = HeightRangePlacementModifier.createUniform(YOffset.BOTTOM, YOffset.fixed(61));
 	public static final Holder<PlacedFeature> FALLEN_OAK_TREE = PlacedFeatureUtil.register(
 			Wander.id("fallen_oak_tree").toString(),
@@ -70,33 +87,7 @@ public class WanderPlacedFeatures {
 			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
 			BiomePlacementModifier.getInstance()
 	);
-	public static Holder<PlacedFeature> WILLOWS_REGULAR_AND_PINK_SWAMP = PlacedFeatureUtil.register(
-			Wander.id("willows_regular_and_pink_swamp").toString(),
-			WanderConfiguredFeatures.WILLOWS_REGULAR_AND_PINK_SWAMP,
-			treePlacementModifiers(PlacedFeatureUtil.createCountExtraModifier(1, 0.1F, 1))
-	);
 
-
-	public static void addFeaturesToVanilla() {
-		if (FALLEN_OAK_TREE_COMMON.getKey().isPresent()) {
-			BiomeModifications.addFeature(
-					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-					GenerationStep.Feature.VEGETAL_DECORATION, FALLEN_OAK_TREE_COMMON.getKey().get()
-			);
-		}
-		if (SUBMERGED_FALLEN_OAK_TREE.getKey().isPresent()) {
-			BiomeModifications.addFeature(
-					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-					GenerationStep.Feature.VEGETAL_DECORATION, SUBMERGED_FALLEN_OAK_TREE.getKey().get()
-			);
-		}
-		if (WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().isPresent()) {
-			BiomeModifications.addFeature(
-					ctx -> ctx.getBiomeKey() == BiomeKeys.SWAMP,
-					GenerationStep.Feature.VEGETAL_DECORATION, WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().get()
-			);
-		}
-	}
 
 	private static ImmutableList.Builder<PlacementModifier> treePlacementModifiersBase(PlacementModifier modifier) {
 		return ImmutableList.<PlacementModifier>builder()
