@@ -5,7 +5,6 @@ import io.github.redstoneparadox.wander.init.WanderPlacementModifierTypes;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.decorator.DecoratorContext;
 import net.minecraft.world.gen.decorator.PlacementModifierType;
@@ -13,7 +12,6 @@ import net.minecraft.world.gen.feature.PlacementModifier;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class UnderwaterPlacementModifier extends PlacementModifier {

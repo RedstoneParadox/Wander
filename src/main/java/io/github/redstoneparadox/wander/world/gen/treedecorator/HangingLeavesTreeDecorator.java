@@ -2,16 +2,11 @@ package io.github.redstoneparadox.wander.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.redstoneparadox.wander.block.ExtendedLeavesBlock;
 import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
-import io.github.redstoneparadox.wander.util.IntBox;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.Waterloggable;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.TestableWorld;
@@ -19,9 +14,7 @@ import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.function.BiConsumer;
 
 public class HangingLeavesTreeDecorator extends TreeDecorator {

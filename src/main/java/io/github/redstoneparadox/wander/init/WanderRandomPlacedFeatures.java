@@ -8,8 +8,6 @@ import net.minecraft.world.gen.decorator.NoiseThresholdCountPlacementModifier;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil;
 
-import static net.minecraft.world.gen.decorator.InSquarePlacementModifier.*;
-
 public class WanderRandomPlacedFeatures {
 	public static Holder<PlacedFeature> WILLOWS_REGULAR_AND_PINK_SWAMP = PlacedFeatureUtil.register(
 			Wander.id("willows_regular_and_pink_swamp").toString(),

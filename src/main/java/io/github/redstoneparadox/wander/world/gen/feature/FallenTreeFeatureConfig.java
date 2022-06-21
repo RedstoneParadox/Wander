@@ -5,11 +5,9 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.redstoneparadox.wander.util.DirectionProvider;
 import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.FallenTreeDecorator;
 import net.minecraft.block.BlockState;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.TreeDecorator;
 
 import java.util.List;
 

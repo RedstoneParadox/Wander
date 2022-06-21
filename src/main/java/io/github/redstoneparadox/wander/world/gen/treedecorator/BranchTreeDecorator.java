@@ -17,7 +17,6 @@ import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.function.BiConsumer;
 
 import static net.minecraft.util.math.Direction.EAST;

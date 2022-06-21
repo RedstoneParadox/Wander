@@ -1,7 +1,6 @@
 package io.github.redstoneparadox.wander.init;
 
 import com.mojang.serialization.Codec;
-import com.sun.source.tree.Tree;
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.mixin.TreeDecoratorTypeInvoker;
 import io.github.redstoneparadox.wander.world.gen.treedecorator.BranchTreeDecorator;
