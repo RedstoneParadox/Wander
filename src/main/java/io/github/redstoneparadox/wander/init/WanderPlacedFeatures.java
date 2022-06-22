@@ -57,6 +57,16 @@ public class WanderPlacedFeatures {
 			WanderConfiguredFeatures.HOLLOW_FALLEN_OAK,
 			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
 	);
+	public static final Holder<PlacedFeature> FALLEN_WILLOW = register(
+			Wander.id("fallen_willow"),
+			WanderConfiguredFeatures.FALLEN_WILLOW,
+			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
+	);
+	public static final Holder<PlacedFeature> HOLLOW_FALLEN_WILLOW = register(
+			Wander.id("hollow_fallen_willow"),
+			WanderConfiguredFeatures.HOLLOW_FALLEN_WILLOW,
+			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
+	);
 
 	private static Holder<PlacedFeature> register(Identifier id, Holder<? extends ConfiguredFeature<?, ?>> configuredFeature, List<PlacementModifier> modifiers) {
 		return PlacedFeatureUtil.register(id.toString(), configuredFeature, modifiers);

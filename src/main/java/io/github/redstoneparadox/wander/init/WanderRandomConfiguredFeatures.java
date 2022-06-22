@@ -21,13 +21,15 @@ public class WanderRandomConfiguredFeatures {
 					WanderPlacedFeatures.WILLOW_TREE_SWAMP
 			)
 	);
-	public static final Holder<ConfiguredFeature<RandomFeatureConfig, ?>> FALLEN_OAKS = WanderConfiguredFeatures.register(
-			Wander.id("fallen_oaks"),
+	public static final Holder<ConfiguredFeature<RandomFeatureConfig, ?>> FALLEN_TREES_SWAMP = WanderConfiguredFeatures.register(
+			Wander.id("fallen_trees_swamp"),
 			Feature.RANDOM_SELECTOR,
 			new RandomFeatureConfig(
 					List.of(
 							new WeightedPlacedFeature(WanderPlacedFeatures.FALLEN_OAK, 0.6f),
-							new WeightedPlacedFeature(WanderPlacedFeatures.HOLLOW_FALLEN_OAK, 0.4f)
+							new WeightedPlacedFeature(WanderPlacedFeatures.HOLLOW_FALLEN_OAK, 0.4f),
+							new WeightedPlacedFeature(WanderPlacedFeatures.FALLEN_WILLOW, 0.6f),
+							new WeightedPlacedFeature(WanderPlacedFeatures.HOLLOW_FALLEN_WILLOW, 0.4f)
 					),
 					WanderPlacedFeatures.HOLLOW_FALLEN_OAK
 			)

@@ -84,6 +84,34 @@ public class WanderConfiguredFeatures {
 					)
 			)
 	);
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_WILLOW = register(
+			Wander.id("fallen_willow"),
+			WanderFeatures.FALLEN_TREE,
+			new FallenTreeFeatureConfig(
+					WanderBlocks.WILLOW_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(WanderBlocks.WILLOW_LOG),
+					UniformIntProvider.create(2, 3),
+					new DirectionProvider(true),
+					false,
+					List.of(
+							new MossFallenTreeDecorator(0.2f)
+					)
+			)
+	);
+	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> HOLLOW_FALLEN_WILLOW = register(
+			Wander.id("hollow_fallen_willow"),
+			WanderFeatures.FALLEN_TREE,
+			new FallenTreeFeatureConfig(
+					WanderBlocks.WILLOW_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_WILLOW_LOG),
+					UniformIntProvider.create(2, 3),
+					new DirectionProvider(true),
+					false,
+					List.of(
+							new MossFallenTreeDecorator(0.2f)
+					)
+			)
+	);
 
 	public static <FC extends FeatureConfig, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> register(Identifier id, F feature, FC featureConfig) {
 		return ConfiguredFeatureUtil.register(id.toString(), feature, featureConfig);

@@ -15,8 +15,8 @@ public class WanderRandomPlacedFeatures {
 			WanderPlacedFeatures.treePlacementModifiers(PlacedFeatureUtil.createCountExtraModifier(1, 0.1F, 1))
 	);
 	public static Holder<PlacedFeature> FALLEN_OAKS = PlacedFeatureUtil.register(
-			Wander.id("fallen_oaks").toString(),
-			WanderRandomConfiguredFeatures.FALLEN_OAKS,
+			Wander.id("fallen_trees_swamp").toString(),
+			WanderRandomConfiguredFeatures.FALLEN_TREES_SWAMP,
 			NoiseThresholdCountPlacementModifier.create(-0.5, 2, 1),
 			InSquarePlacementModifier.getInstance(),
 			PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP,
