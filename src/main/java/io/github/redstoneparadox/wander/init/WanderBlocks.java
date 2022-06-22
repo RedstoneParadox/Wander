@@ -48,6 +48,10 @@ public class WanderBlocks {
 			Wander.id("willow_log"),
 			createLogBlock(MapColor.PALE_GREEN, MapColor.BROWN)
 	);
+	public static final Block HOLLOW_WILLOW_LOG = register(
+			Wander.id("hollow_willow_log"),
+			createHollowLogBlock(MapColor.PALE_GREEN, MapColor.BROWN)
+	);
 	public static final Block WILLOW_LEAVES = register(
 			Wander.id("willow_leaves"),
 			createExtendedLeavesBlock(BlockSoundGroup.GRASS)

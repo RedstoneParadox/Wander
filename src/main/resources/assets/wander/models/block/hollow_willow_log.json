@@ -1,0 +1,8 @@
+{
+  "parent": "wander:block/hollow_log",
+  "textures" : {
+    "end": "wander:block/willow_log_top",
+    "side": "wander:block/willow_log",
+    "inside": "wander:block/stripped_willow_log"
+  }
+}

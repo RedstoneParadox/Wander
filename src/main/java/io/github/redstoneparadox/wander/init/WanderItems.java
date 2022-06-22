@@ -58,6 +58,13 @@ public class WanderItems {
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
+	public static final Item HOLLOW_WILLOW_LOG = register(
+			Wander.id("hollow_willow_log"),
+			new BlockItem(
+					WanderBlocks.HOLLOW_WILLOW_LOG,
+					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
+			)
+	);
 	public static final Item WILLOW_LEAVES = register(
 			Wander.id("willow_leaves"),
 			new BlockItem(
