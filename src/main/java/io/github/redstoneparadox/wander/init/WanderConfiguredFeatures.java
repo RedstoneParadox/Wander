@@ -105,7 +105,7 @@ public class WanderConfiguredFeatures {
 		return new TreeFeatureConfig.Builder(
 				BlockStateProvider.of(WanderBlocks.WILLOW_LOG),
 				new WillowTrunkPlacer(
-						2, 1, 2, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(4, 6), UniformIntProvider.create(6, 9)
+						1, 1, 1, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(4, 6), UniformIntProvider.create(6, 9)
 				),
 				BlockStateProvider.of(leaves),
 				new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(3), 50),

@@ -36,14 +36,7 @@ public class FallenTreeFeature extends Feature<FallenTreeFeatureConfig> {
 		StructureWorldAccess worldAccess = context.getWorld();
 		BlockState stump = config.stump();
 		int height = config.height().get(random);
-		Direction direction;
-		switch (config.direction().get(random)) {
-			case 0 -> direction = NORTH;
-			case 1 -> direction = EAST;
-			case 2 -> direction = SOUTH;
-			case 3 -> direction = WEST;
-			default -> throw new IllegalStateException("Unexpected value: " + config.direction().get(random));
-		}
+		Direction direction = config.direction().get(random);
 		List<FallenTreeDecorator> decorators = config.decorators();
 		Set<BlockPos> logPositions = new HashSet<>();
 
