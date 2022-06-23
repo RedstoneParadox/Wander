@@ -1,24 +1,29 @@
 package io.github.redstoneparadox.wander.util;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.random.RandomGenerator;
 
-public class DirectionProvider {
-	public static Codec<DirectionProvider> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-			Codec.BOOL.fieldOf("horizontal").forGetter(provider -> provider.horizontal)
-	).apply(instance, DirectionProvider::new));
-	private final boolean horizontal;
+import java.util.List;
 
-	public DirectionProvider(boolean horizontal) {
-		this.horizontal = horizontal;
-	}
+import static net.minecraft.util.math.Direction.EAST;
+import static net.minecraft.util.math.Direction.NORTH;
+import static net.minecraft.util.math.Direction.SOUTH;
+import static net.minecraft.util.math.Direction.WEST;
+
+public record DirectionProvider(List<Direction> directions) {
+	public static Codec<DirectionProvider> CODEC = Codec.list(Direction.CODEC)
+			.fieldOf("directions")
+			.xmap(DirectionProvider::new, provider -> provider.directions)
+			.codec();
 
 	public Direction get(RandomGenerator generator) {
-		int value = generator.range(0, horizontal ? 4 : 6);
-		if (horizontal) value += 2;
+		int index = generator.nextInt(directions.size());
 
-		return Direction.byId(value);
+		return directions.get(index);
+	}
+
+	public static DirectionProvider horizontal() {
+		return new DirectionProvider(List.of(NORTH, SOUTH, EAST, WEST));
 	}
 }

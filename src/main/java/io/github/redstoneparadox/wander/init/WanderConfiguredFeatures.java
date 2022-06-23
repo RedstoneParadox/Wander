@@ -63,7 +63,7 @@ public class WanderConfiguredFeatures {
 					Blocks.OAK_LOG.getDefaultState(),
 					SimpleBlockStateProvider.of(Blocks.OAK_LOG),
 					UniformIntProvider.create(3, 6),
-					new DirectionProvider(true),
+					DirectionProvider.horizontal(),
 					false,
 					List.of(
 							new MossFallenTreeDecorator(0.2f)
@@ -77,7 +77,7 @@ public class WanderConfiguredFeatures {
 					Blocks.OAK_LOG.getDefaultState(),
 					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_OAK_LOG),
 					UniformIntProvider.create(3, 6),
-					new DirectionProvider(true),
+					DirectionProvider.horizontal(),
 					false,
 					List.of(
 							new MossFallenTreeDecorator(0.2f)
@@ -91,7 +91,7 @@ public class WanderConfiguredFeatures {
 					WanderBlocks.WILLOW_LOG.getDefaultState(),
 					SimpleBlockStateProvider.of(WanderBlocks.WILLOW_LOG),
 					UniformIntProvider.create(2, 3),
-					new DirectionProvider(true),
+					DirectionProvider.horizontal(),
 					false,
 					List.of(
 							new MossFallenTreeDecorator(0.2f)
@@ -105,7 +105,7 @@ public class WanderConfiguredFeatures {
 					WanderBlocks.WILLOW_LOG.getDefaultState(),
 					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_WILLOW_LOG),
 					UniformIntProvider.create(2, 3),
-					new DirectionProvider(true),
+					DirectionProvider.horizontal(),
 					false,
 					List.of(
 							new MossFallenTreeDecorator(0.2f)
