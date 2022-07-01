@@ -33,6 +33,7 @@ dependencies {
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation libs.quilted.fabric.api
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform}"
+	modImplementation "com.terraformersmc.terraform-api:terraform-tree-api-v1:${project.terraform}"
 }
 
 processResources {
