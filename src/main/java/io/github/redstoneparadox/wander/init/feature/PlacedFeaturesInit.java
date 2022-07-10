@@ -1,4 +1,4 @@
-package io.github.redstoneparadox.wander.init;
+package io.github.redstoneparadox.wander.init.feature;
 
 import com.google.common.collect.ImmutableList;
 import io.github.redstoneparadox.wander.Wander;
@@ -22,26 +22,26 @@ import java.util.List;
 
 import static net.minecraft.world.gen.feature.VegetationPlacedFeatures.TREE_THRESHOLD;
 
-public class WanderPlacedFeatures {
+public class PlacedFeaturesInit {
 	public static final Holder<PlacedFeature> WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
 			Wander.id("willow_swamp").toString(),
-			WanderConfiguredFeatures.WILLOW_SWAMP,
+			ConfiguredFeaturesInit.WILLOW_SWAMP,
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 	public static final Holder<PlacedFeature> PINK_WILLOW_TREE_SWAMP = PlacedFeatureUtil.register(
 			Wander.id("pink_willow_swamp").toString(),
-			WanderConfiguredFeatures.PINK_WILLOW_SWAMP,
+			ConfiguredFeaturesInit.PINK_WILLOW_SWAMP,
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 	// For saplings
 	public static final Holder<PlacedFeature> WILLOW = PlacedFeatureUtil.register(
 			Wander.id("willow").toString(),
-			WanderConfiguredFeatures.WILLOW,
+			ConfiguredFeaturesInit.WILLOW,
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 	public static final Holder<PlacedFeature> PINK_WILLOW = PlacedFeatureUtil.register(
 			Wander.id("pink_willow").toString(),
-			WanderConfiguredFeatures.PINK_WILLOW,
+			ConfiguredFeaturesInit.PINK_WILLOW,
 			PlacedFeatureUtil.createWouldSurvivePlacementModifier(Blocks.MANGROVE_PROPAGULE)
 	);
 
@@ -49,22 +49,22 @@ public class WanderPlacedFeatures {
 
 	public static final Holder<PlacedFeature> FALLEN_OAK = register(
 			Wander.id("fallen_oak"),
-			WanderConfiguredFeatures.FALLEN_OAK,
+			ConfiguredFeaturesInit.FALLEN_OAK,
 			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
 	);
 	public static final Holder<PlacedFeature> HOLLOW_FALLEN_OAK = register(
 			Wander.id("hollow_fallen_oak"),
-			WanderConfiguredFeatures.HOLLOW_FALLEN_OAK,
+			ConfiguredFeaturesInit.HOLLOW_FALLEN_OAK,
 			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
 	);
 	public static final Holder<PlacedFeature> FALLEN_WILLOW = register(
 			Wander.id("fallen_willow"),
-			WanderConfiguredFeatures.FALLEN_WILLOW,
+			ConfiguredFeaturesInit.FALLEN_WILLOW,
 			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
 	);
 	public static final Holder<PlacedFeature> HOLLOW_FALLEN_WILLOW = register(
 			Wander.id("hollow_fallen_willow"),
-			WanderConfiguredFeatures.HOLLOW_FALLEN_WILLOW,
+			ConfiguredFeaturesInit.HOLLOW_FALLEN_WILLOW,
 			List.of(PlacedFeatureUtil.WORLD_SURFACE_WG_HEIGHTMAP)
 	);
 

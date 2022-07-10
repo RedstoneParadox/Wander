@@ -2,7 +2,7 @@ package io.github.redstoneparadox.wander.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
+import io.github.redstoneparadox.wander.init.feature.TreeDecoratorTypesInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.state.property.Properties;
@@ -40,7 +40,7 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
 
 	@Override
 	protected TreeDecoratorType<?> getType() {
-		return WanderTreeDecoratorTypes.HANGING_LEAVES;
+		return TreeDecoratorTypesInit.HANGING_LEAVES;
 	}
 
 	@Override

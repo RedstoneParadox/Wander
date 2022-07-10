@@ -1,9 +1,9 @@
 package io.github.redstoneparadox.wander;
 
-import io.github.redstoneparadox.wander.init.WanderItems;
-import io.github.redstoneparadox.wander.init.WanderPlacementModifierTypes;
-import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
-import io.github.redstoneparadox.wander.init.WanderWorldgen;
+import io.github.redstoneparadox.wander.init.ItemsInit;
+import io.github.redstoneparadox.wander.init.feature.PlacementModifierTypesInit;
+import io.github.redstoneparadox.wander.init.feature.TreeDecoratorTypesInit;
+import io.github.redstoneparadox.wander.init.WorldgenInit;
 import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
@@ -18,10 +18,10 @@ public class Wander implements ModInitializer {
 	public void onInitialize(ModContainer mod) {
 		Wander.id = mod.metadata().id();
 
-		WanderItems.init();
-		WanderTreeDecoratorTypes.init();
-		WanderPlacementModifierTypes.init();
-		WanderWorldgen.addFeaturesToVanilla();
+		ItemsInit.init();
+		TreeDecoratorTypesInit.init();
+		PlacementModifierTypesInit.init();
+		WorldgenInit.addFeaturesToVanilla();
 
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
 	}

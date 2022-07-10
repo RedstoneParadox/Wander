@@ -1,7 +1,7 @@
 package io.github.redstoneparadox.wander.world.gen.placementmodifiers;
 
 import com.mojang.serialization.Codec;
-import io.github.redstoneparadox.wander.init.WanderPlacementModifierTypes;
+import io.github.redstoneparadox.wander.init.feature.PlacementModifierTypesInit;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
@@ -32,6 +32,6 @@ public class UnderwaterPlacementModifier extends PlacementModifier {
 
 	@Override
 	public PlacementModifierType<?> getType() {
-		return WanderPlacementModifierTypes.UNDERWATER_PLACEMENT_MODIFIER;
+		return PlacementModifierTypesInit.UNDERWATER_PLACEMENT_MODIFIER;
 	}
 }

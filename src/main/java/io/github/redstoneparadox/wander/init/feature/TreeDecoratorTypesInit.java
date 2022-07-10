@@ -1,4 +1,4 @@
-package io.github.redstoneparadox.wander.init;
+package io.github.redstoneparadox.wander.init.feature;
 
 import com.mojang.serialization.Codec;
 import io.github.redstoneparadox.wander.Wander;
@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
-public class WanderTreeDecoratorTypes {
+public class TreeDecoratorTypesInit {
 	public static final TreeDecoratorType<BranchTreeDecorator> BRANCH_TREE_DECORATOR = register(
 			Wander.id("branch_tree"),
 			BranchTreeDecorator.CODEC

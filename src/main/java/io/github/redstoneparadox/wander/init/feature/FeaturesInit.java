@@ -1,4 +1,4 @@
-package io.github.redstoneparadox.wander.init;
+package io.github.redstoneparadox.wander.init.feature;
 
 import io.github.redstoneparadox.wander.Wander;
 import io.github.redstoneparadox.wander.world.gen.feature.ExtendedTreeFeature;
@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
-public class WanderFeatures {
+public class FeaturesInit {
 	public static Feature<FallenTreeFeatureConfig> FALLEN_TREE = register(
 			Wander.id("fallen_tree"),
 			new FallenTreeFeature(FallenTreeFeatureConfig.CODEC)

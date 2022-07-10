@@ -18,7 +18,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
-public class WanderBlocks {
+public class BlocksInit {
 	public static final Block HOLLOW_OAK_LOG = register(
 			hollowid("oak"),
 			createHollowLogBlock(MapColor.OAK_TAN, MapColor.SPRUCE_BROWN)
@@ -89,9 +89,9 @@ public class WanderBlocks {
 						.ticksRandomly()
 						.sounds(soundGroup)
 						.nonOpaque()
-						.allowsSpawning(WanderBlocks::canSpawnOnLeaves)
-						.suffocates(WanderBlocks::never)
-						.blockVision(WanderBlocks::never)
+						.allowsSpawning(BlocksInit::canSpawnOnLeaves)
+						.suffocates(BlocksInit::never)
+						.blockVision(BlocksInit::never)
 		);
 	}
 
@@ -102,9 +102,9 @@ public class WanderBlocks {
 						.ticksRandomly()
 						.sounds(soundGroup)
 						.nonOpaque()
-						.allowsSpawning(WanderBlocks::canSpawnOnLeaves)
-						.suffocates(WanderBlocks::never)
-						.blockVision(WanderBlocks::never)
+						.allowsSpawning(BlocksInit::canSpawnOnLeaves)
+						.suffocates(BlocksInit::never)
+						.blockVision(BlocksInit::never)
 		);
 	}
 

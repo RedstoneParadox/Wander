@@ -1,6 +1,7 @@
-package io.github.redstoneparadox.wander.init;
+package io.github.redstoneparadox.wander.init.feature;
 
 import io.github.redstoneparadox.wander.Wander;
+import io.github.redstoneparadox.wander.init.BlocksInit;
 import io.github.redstoneparadox.wander.util.DirectionProvider;
 import io.github.redstoneparadox.wander.world.gen.fallentreedecorator.MossFallenTreeDecorator;
 import io.github.redstoneparadox.wander.world.gen.feature.FallenTreeFeatureConfig;
@@ -31,34 +32,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WanderConfiguredFeatures {
+public class ConfiguredFeaturesInit {
 	// Trees
 	protected static final BeehiveTreeDecorator BEES_001 = new BeehiveTreeDecorator(0.01F);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> PINK_WILLOW_SWAMP = register(
 			Wander.id("pink_willow_swamp"),
-			WanderFeatures.EXTENDED_TREE,
+			FeaturesInit.EXTENDED_TREE,
 			willowConfig(true, true)
 	);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> PINK_WILLOW = register(
 			Wander.id("pink_willow"),
-			WanderFeatures.EXTENDED_TREE,
+			FeaturesInit.EXTENDED_TREE,
 			willowConfig(true, false)
 	);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> WILLOW_SWAMP = register(
 			Wander.id("willow_swamp"),
-			WanderFeatures.EXTENDED_TREE,
+			FeaturesInit.EXTENDED_TREE,
 			willowConfig(false, true)
 	);
 	public static final Holder<ConfiguredFeature<TreeFeatureConfig, ?>> WILLOW = register(
 			Wander.id("willow"),
-			WanderFeatures.EXTENDED_TREE,
+			FeaturesInit.EXTENDED_TREE,
 			willowConfig(false, false)
 	);
 
 	// Fallen Trees
 	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_OAK = register(
 			Wander.id("fallen_oak"),
-			WanderFeatures.FALLEN_TREE,
+			FeaturesInit.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
 					Blocks.OAK_LOG.getDefaultState(),
 					SimpleBlockStateProvider.of(Blocks.OAK_LOG),
@@ -72,10 +73,10 @@ public class WanderConfiguredFeatures {
 	);
 	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> HOLLOW_FALLEN_OAK = register(
 			Wander.id("hollow_fallen_oak"),
-			WanderFeatures.FALLEN_TREE,
+			FeaturesInit.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
 					Blocks.OAK_LOG.getDefaultState(),
-					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_OAK_LOG),
+					SimpleBlockStateProvider.of(BlocksInit.HOLLOW_OAK_LOG),
 					UniformIntProvider.create(3, 6),
 					DirectionProvider.horizontal(),
 					false,
@@ -86,10 +87,10 @@ public class WanderConfiguredFeatures {
 	);
 	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> FALLEN_WILLOW = register(
 			Wander.id("fallen_willow"),
-			WanderFeatures.FALLEN_TREE,
+			FeaturesInit.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
-					WanderBlocks.WILLOW_LOG.getDefaultState(),
-					SimpleBlockStateProvider.of(WanderBlocks.WILLOW_LOG),
+					BlocksInit.WILLOW_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(BlocksInit.WILLOW_LOG),
 					UniformIntProvider.create(2, 3),
 					DirectionProvider.horizontal(),
 					false,
@@ -100,10 +101,10 @@ public class WanderConfiguredFeatures {
 	);
 	public static final Holder<ConfiguredFeature<FallenTreeFeatureConfig, ?>> HOLLOW_FALLEN_WILLOW = register(
 			Wander.id("hollow_fallen_willow"),
-			WanderFeatures.FALLEN_TREE,
+			FeaturesInit.FALLEN_TREE,
 			new FallenTreeFeatureConfig(
-					WanderBlocks.WILLOW_LOG.getDefaultState(),
-					SimpleBlockStateProvider.of(WanderBlocks.HOLLOW_WILLOW_LOG),
+					BlocksInit.WILLOW_LOG.getDefaultState(),
+					SimpleBlockStateProvider.of(BlocksInit.HOLLOW_WILLOW_LOG),
 					UniformIntProvider.create(2, 3),
 					DirectionProvider.horizontal(),
 					false,
@@ -118,7 +119,7 @@ public class WanderConfiguredFeatures {
 	}
 
 	private static TreeFeatureConfig willowConfig(boolean pink, boolean vines) {
-		BlockState leaves = (pink ? WanderBlocks.PINK_WILLOW_LEAVES : WanderBlocks.WILLOW_LEAVES).getDefaultState();
+		BlockState leaves = (pink ? BlocksInit.PINK_WILLOW_LEAVES : BlocksInit.WILLOW_LEAVES).getDefaultState();
 		List<TreeDecorator> decorators = new ArrayList<>();
 
 		decorators.add(BEES_001);
@@ -131,7 +132,7 @@ public class WanderConfiguredFeatures {
 		if (vines) decorators.add(new LeavesVineTreeDecorator(0.125F));
 
 		return new TreeFeatureConfig.Builder(
-				BlockStateProvider.of(WanderBlocks.WILLOW_LOG),
+				BlockStateProvider.of(BlocksInit.WILLOW_LOG),
 				new WillowTrunkPlacer(
 						1, 1, 1, Registry.BLOCK.getOrCreateTag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH), UniformIntProvider.create(4, 6), UniformIntProvider.create(6, 9)
 				),

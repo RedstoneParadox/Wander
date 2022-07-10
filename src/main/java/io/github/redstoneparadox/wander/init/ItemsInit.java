@@ -8,74 +8,74 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
-public class WanderItems {
+public class ItemsInit {
 	public static final Item HOLLOW_OAK_LOG = register(
 			hollowid("oak"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_OAK_LOG,
+					BlocksInit.HOLLOW_OAK_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item HOLLOW_SPRUCE_LOG = register(
 			hollowid("spruce"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_SPRUCE_LOG,
+					BlocksInit.HOLLOW_SPRUCE_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item HOLLOW_BIRCH_LOG = register(
 			hollowid("birch"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_BIRCH_LOG,
+					BlocksInit.HOLLOW_BIRCH_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item HOLLOW_JUNGLE_LOG = register(
 			hollowid("jungle"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_JUNGLE_LOG,
+					BlocksInit.HOLLOW_JUNGLE_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item HOLLOW_ACACIA_LOG = register(
 			hollowid("acacia"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_ACACIA_LOG,
+					BlocksInit.HOLLOW_ACACIA_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item HOLLOW_DARK_OAK_LOG = register(
 			hollowid("dark_oak"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_DARK_OAK_LOG,
+					BlocksInit.HOLLOW_DARK_OAK_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item WILLOW_LOG = register(
 			Wander.id("willow_log"),
 			new BlockItem(
-					WanderBlocks.WILLOW_LOG,
+					BlocksInit.WILLOW_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item HOLLOW_WILLOW_LOG = register(
 			Wander.id("hollow_willow_log"),
 			new BlockItem(
-					WanderBlocks.HOLLOW_WILLOW_LOG,
+					BlocksInit.HOLLOW_WILLOW_LOG,
 					new QuiltItemSettings().group(ItemGroup.BUILDING_BLOCKS)
 			)
 	);
 	public static final Item WILLOW_LEAVES = register(
 			Wander.id("willow_leaves"),
 			new BlockItem(
-					WanderBlocks.WILLOW_LEAVES,
+					BlocksInit.WILLOW_LEAVES,
 					new QuiltItemSettings().group(ItemGroup.DECORATIONS)
 			)
 	);
 	public static final Item PINK_WILLOW_LEAVES = register(
 			Wander.id("pink_willow_leaves"),
 			new BlockItem(
-					WanderBlocks.PINK_WILLOW_LEAVES,
+					BlocksInit.PINK_WILLOW_LEAVES,
 					new QuiltItemSettings().group(ItemGroup.DECORATIONS)
 			)
 	);

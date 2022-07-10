@@ -1,4 +1,4 @@
-package io.github.redstoneparadox.wander.init;
+package io.github.redstoneparadox.wander.init.feature;
 
 import com.mojang.serialization.Codec;
 import io.github.redstoneparadox.wander.Wander;
@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
-public class WanderTrunkPlacerTypes {
+public class TrunkPlacerTypesInit {
 	public static final TrunkPlacerType<WillowTrunkPlacer> WILLOW = register(
 			Wander.id("willow"),
 			WillowTrunkPlacer.CODEC

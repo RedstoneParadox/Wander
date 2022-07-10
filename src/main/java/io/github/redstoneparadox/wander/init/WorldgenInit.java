@@ -1,5 +1,6 @@
 package io.github.redstoneparadox.wander.init;
 
+import io.github.redstoneparadox.wander.init.feature.PlacedRandomFeaturesInit;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
@@ -9,20 +10,20 @@ import org.quiltmc.qsl.worldgen.biome.api.BiomeSelectionContext;
 
 import java.util.function.Predicate;
 
-public class WanderWorldgen {
+public class WorldgenInit {
 	public static void addFeaturesToVanilla() {
 		// Random Placed Features need to come first to avoid static initialization errors
-		if (WanderRandomPlacedFeatures.WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().isPresent()) {
+		if (PlacedRandomFeaturesInit.WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().isPresent()) {
 			BiomeModifications.addFeature(
 					biomePredicate(BiomeKeys.SWAMP),
-					GenerationStep.Feature.VEGETAL_DECORATION, WanderRandomPlacedFeatures.WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().get()
+					GenerationStep.Feature.VEGETAL_DECORATION, PlacedRandomFeaturesInit.WILLOWS_REGULAR_AND_PINK_SWAMP.getKey().get()
 			);
 		}
-		if (WanderRandomPlacedFeatures.FALLEN_OAKS.getKey().isPresent()) {
+		if (PlacedRandomFeaturesInit.FALLEN_OAKS.getKey().isPresent()) {
 			BiomeModifications.addFeature(
 					biomePredicate(BiomeKeys.SWAMP),
 					GenerationStep.Feature.VEGETAL_DECORATION,
-					WanderRandomPlacedFeatures.FALLEN_OAKS.getKey().get()
+					PlacedRandomFeaturesInit.FALLEN_OAKS.getKey().get()
 			);
 		}
 	}

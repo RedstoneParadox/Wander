@@ -3,7 +3,7 @@ package io.github.redstoneparadox.wander.world.gen.trunkplacer;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.redstoneparadox.wander.init.WanderTrunkPlacerTypes;
+import io.github.redstoneparadox.wander.init.feature.TrunkPlacerTypesInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.HolderSet;
@@ -47,7 +47,7 @@ public class WillowTrunkPlacer extends TrunkPlacer {
 
 	@Override
 	protected TrunkPlacerType<?> getType() {
-		return WanderTrunkPlacerTypes.WILLOW;
+		return TrunkPlacerTypesInit.WILLOW;
 	}
 
 	@Override

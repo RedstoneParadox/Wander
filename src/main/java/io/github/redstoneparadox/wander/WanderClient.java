@@ -1,6 +1,6 @@
 package io.github.redstoneparadox.wander;
 
-import io.github.redstoneparadox.wander.init.WanderBlocks;
+import io.github.redstoneparadox.wander.init.BlocksInit;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
@@ -15,9 +15,9 @@ public class WanderClient implements ClientModInitializer {
 		ColorProviderRegistry.BLOCK.register((blockState, blockRenderView, blockPos, i) -> {
 			assert blockRenderView != null;
 			return blockRenderView.getColor(blockPos, BiomeColors.FOLIAGE_COLOR);
-		}, WanderBlocks.WILLOW_LEAVES);
+		}, BlocksInit.WILLOW_LEAVES);
 		ColorProviderRegistry.ITEM.register((itemStack, i) -> FoliageColors.getDefaultColor());
 
-		BlockRenderLayerMap.put(RenderLayer.getCutout(), WanderBlocks.WILLOW_LEAVES, WanderBlocks.PINK_WILLOW_LEAVES);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), BlocksInit.WILLOW_LEAVES, BlocksInit.PINK_WILLOW_LEAVES);
 	}
 }

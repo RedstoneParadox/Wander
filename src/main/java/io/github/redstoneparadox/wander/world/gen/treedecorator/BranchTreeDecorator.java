@@ -2,7 +2,7 @@ package io.github.redstoneparadox.wander.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.redstoneparadox.wander.init.WanderTreeDecoratorTypes;
+import io.github.redstoneparadox.wander.init.feature.TreeDecoratorTypesInit;
 import it.unimi.dsi.fastutil.ints.IntComparators;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -42,7 +42,7 @@ public class BranchTreeDecorator extends TreeDecorator {
 
 	@Override
 	protected TreeDecoratorType<?> getType() {
-		return WanderTreeDecoratorTypes.BRANCH_TREE_DECORATOR;
+		return TreeDecoratorTypesInit.BRANCH_TREE_DECORATOR;
 	}
 
 
